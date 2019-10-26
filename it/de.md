@@ -47,6 +47,11 @@ scalability.attributes.computing.cloud
     horizontally: add/close resources to the applications on-demand  
 elasticity.attributes.computing.cloud  
 pooling.attributes.computing.cloud  
++ terminating a cluster when not in use and booting it again is costly (time)
++ create a pool with ready-to-use *instances*
++ the pool is attached to multiple clusters that request instances
++ the pool creates more instances if required, and terminates them if nobody needs them, always keeping available a couple of instances
++ pros: increases start and auto-scalling time
 provisioning.attributes.computing.cloud  
 cloud.azure.delivery.models  
 cloud.azure.infrastructure.models.SaaS  
@@ -62,6 +67,13 @@ compute.PaaS.models.infrastructure.azure.cloud
 IaaS.models.infrastructure.azure.cloud
 compute.IaaS.models.infrastructure.azure.cloud
 + VMs
+pool.spark-cluster.distributed.system
++ pool of instances/vms for multiple spark clusters
++ properties:
+    + idle instance auto termination: define whether to terminate an instance/vm after a number of minutes
+    + minimum idle instances: number of instances/vms always running in the pool
+    + maximum capacity: upper limit of instances/vms in the pool. If clusters demand more instances/vms than those available, and more than those defined in the max capacity, it will result in a failure.
+    + instance type: if a cluster is attached to a pool, the driver and the worker vm nodes have to use the instance config specified in the pool
 spark-cluster.distributed.system
 + the spark distributed system running the spark engine
 spark-core.distributed.system
@@ -101,6 +113,7 @@ geography.azure.cloud
     {regions} for compliance and data residency purposes  
 dev-test-labs.azure
 dbfs.file-system.databricks.azure.cloud
+single-sign-on.databricks. azure.cloud
 + persists data in azure-storage
 azure-storage.data-persistence.azure.cloud
 databricks.azure.cloud
@@ -116,7 +129,39 @@ databricks.azure.cloud
 + dataset build automation
 + brings together data engineering and data science workloads
 + clusters need to be terminated explicitly
-standard-spark-cluster.spark-cluster.databricks.azure.cloud
+runtime-version.databricks.azure.cloud
++ vm image with  pre-installed libraries with a specific version of spark, python|scale|... and other libraries
++ each runtime has a version:
+    + ML
+    + acceletared GPU
+event-log.spark-cluster.databricks.azure.cloud  
++ logs about the cluster: ``CREATING``, ``TERMINATING``, *etc.*
+driver-logs.spark-cluster.databricks.azure.cloud  
++ logs of jobs being executed in the cluster
+dbu.databricks-unit.databricks.azure.cloud  
++ capacity of processing per hour
++ 0.75 DBUs means the running of a vm during one hour will consume 0.75 DBUs
++ Azure charges by **DBU**
+worker-node.interactive-spark-cluster.spark-cluster.databricks.azure.cloud  
++ the runtime vm definition will apply to all worker nodes
+driver-node.interactive-spark-cluster.spark-cluster.databricks.azure.cloud  
++ also known as **master node**
+job-spark-cluster.spark-cluster.databricks.azure.cloud 
++ also known as automated-spark-cluster.spark-cluster.databricks.azure.cloud 
++ used to run automated jobs, which require cluster config while setting up a job
++ the cluster is created when the job starts, terminating when the job ends
++ the cluster cannot be created by a user
++ auto-scale on demand
++ cons: all the resources get locked/dedicated to the job
+interactive-spark-cluster.spark-cluster.databricks.azure.cloud  
++ cluster used to interact with the data through `notebooks`
++ created by users or by `crt cluster api`. Remember they do not auto terminate. I'll be charged whenever they are running, even of they're not being used.  Databricks enables the user to terminate the clusters if they're inactive for a given period of time.
++ auto-scale on demand
++ cons: need to be explicitly shut down
++ modes:
+    + standard-mode: meant for single users, single users using the same cluster, and it does not provide **fault isolation**, if multiple users are working on the same cluster, failing in the code execution of one user may affect other users; It also does not guarantee **task preemption**, so one user can consume all the resources and block them for other users. It is thus recommended (for specific UC) that each user works in his own separate cluster. Standard clusters support multiple languages.
+    + high-concurrency-mode: supports mulitple users, with **fault isolation** and **task preemption**. This guarantees maximum usage of the cluster, saving costs. cons: python, sql, r, not scala; 
+standard-spark-cluster.spark-cluster.databricks.azure.cloud  
 + different users share single cluster and it's resources
 databricks-serverless.spark-cluster.databricks.azure.cloud
 + a spark-cluster designed for high concurrency
