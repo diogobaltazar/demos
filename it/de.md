@@ -236,7 +236,9 @@ ddl.operations.information-system
 crud.operations.information-system
 -----
 questions  
-ucs para rdds ao inves de dataframes?  
+[ucs para rdds ao inves de dataframes?](https://databricks.com/blog/2016/07/14/a-tale-of-three-apache-spark-apis-rdds-dataframes-and-datasets.html#targetText=Conceptually%2C%20consider%20DataFrame%20as%20an,or%20a%20class%20in%20Java.)
+[data lave vs data warehouse?](https://fr.talend.com/resources/data-lake-vs-data-warehouse/)
+[dimensional data modelling in haddop?](https://sonra.io/2017/05/15/dimensional-modeling-and-kimball-data-marts-in-the-age-of-big-data-and-hadoop/)
 
 -----  
 training  
