@@ -92,9 +92,18 @@ rdd.distributed.system
     + fault-recovery by recalculating through the lineage graph should data be missing/corrupted/node crash
 dataframe.distributed.system
 + tabular schema API on top of RDD
++ domain specific language API for manipulations
 + with tabular schema: ++performance
++ untyped: collection of Row objects, untyped JVM objects
+dataset.distributed.system
++ tabular schema API on top of RDD
++ domain specific language API for manipulations
++ with tabular schema: ++performance
++ typed: collection of typed-Row objects, typed JVM objects, where the types are declared in a Java/Scala class
++ datasets are not available for PySpark/RSpark because they have **no compile-time type-safety**
 sparksql.spark.distributed.system
     + structured data processing: pyspark, etc.
+compile-time-type-safety
 graphx.spark.distributed.system
     + graph data processing
 storage.IaaS.models.infrastructure.azure.cloud
