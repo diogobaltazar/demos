@@ -90,6 +90,7 @@ rdd.distributed.system
 + the lineage graph enables:
     + data lineage
     + fault-recovery by recalculating through the lineage graph should data be missing/corrupted/node crash
+table.distributed.system
 dataframe.distributed.system
 + tabular schema API on top of RDD
 + domain specific language API for manipulations
@@ -122,6 +123,8 @@ geography.azure.cloud
     {regions} for compliance and data residency purposes  
 dev-test-labs.azure
 dbfs.file-system.databricks.azure.cloud
++ distributed file sytem mounted into an azure databricks workspace and accessible from azure databricks clusters.
++ abstraction on top of scalable objects store
 single-sign-on.databricks. azure.cloud
 + persists data in azure-storage
 azure-storage.data-persistence.azure.cloud
@@ -175,6 +178,9 @@ standard-spark-cluster.spark-cluster.databricks.azure.cloud
 databricks-serverless.spark-cluster.databricks.azure.cloud
 + a spark-cluster designed for high concurrency
 + each user accesses a shared pool of resources, granting isolation for the user spark environment
+idempotent
+optimize.databricks.azure.cloud
++ Optimize the layout of data stored in DBFS. Optionally optimize a subset of data or colocate data by column.
 delta-lake.databricks.azure.cloud
 + a data lake is difficult to manage
 + open-source storage layer that adds features/structure to data lake files:
@@ -182,6 +188,53 @@ delta-lake.databricks.azure.cloud
     + schema enforcement
     + full dml support
     + rollback
+database.databricks.azure.cloud
++ collection of tables
+table.databricks.azure.cloud
++ collection of structured data
++ equivalent to dataframes
+metastore.databricks.azure.cloud
++ [metastore](https://docs.databricks.com/data/metastores/index.html)
++ [database](https://docs.databricks.com/data/tables.html)
+data-store.databricks.azure.cloud
++ also known as data-source
++ files, databases, *etc.*, are considered **data stores**.
+Amazon-Redshift.data-store.databricks.azure.cloud
+Amazon-S3.data-store.databricks.azure.cloud
+Amazon-S3-Select.data-store.databricks.azure.cloud
+Azure-Blob-Storage.data-store.databricks.azure.cloud
+Azure-Data-Lake-Storage-Gen1.data-store.databricks.azure.cloud
+Azure-Data-Lake-Storage-Gen2.data-store.databricks.azure.cloud
+Azure-Cosmos-DB.data-store.databricks.azure.cloud
+Azure-SQL-Data-Warehouse.data-store.databricks.azure.cloud
+SQL-Databases-using-JDBC.data-store.databricks.azure.cloud
+Binary-File.data-store.databricks.azure.cloud
+Cassandra.data-store.databricks.azure.cloud
+ElasticSearch.data-store.databricks.azure.cloud
+Image.data-store.databricks.azure.cloud
+Hive-Tables.data-store.databricks.azure.cloud
+MLflow-Experiment.data-store.databricks.azure.cloud
+MongoDB.data-store.databricks.azure.cloud
+Oracle.data-store.databricks.azure.cloud
+Avro-Files.data-store.databricks.azure.cloud
+CSV-Files.data-store.databricks.azure.cloud
+JSON-Files.data-store.databricks.azure.cloud
+LZO-Compressed-Files.data-store.databricks.azure.cloud
+Parquet-Files.data-store.databricks.azure.cloud
+Zip-Files.data-store.databricks.azure.cloud
+partitioning
++ [more](https://medium.com/@mrpowers/managing-spark-partitions-with-coalesce-and-repartition-4050c57ad5c4)
+aws-glue-data-catalog
++ a process for cataloging data
+data-catalog.databricks.azure.cloud
++ example: **AWS Glue Data Catalog**
++ the **columns** and the **columns types** for each table for each data-store
++ the **columns** and the **columns types** are infered by a **crawler** through **customized classifiers**. If none of the classifiers successfuly categorizes the data, **built-in** classifiers try do categorize the data (example: JSON)
++ the crawler writes the schema to the data-catalog/hive metastore
++ [more](https://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html)
+global.table.databricks.azure.cloud
++ available across all clusters
+local.table.databricks.azure.cloud
 spark-cluster.azure.cloud
 azure-devops.azure.cloud
 + version-control
@@ -236,9 +289,13 @@ ddl.operations.information-system
 crud.operations.information-system
 -----
 questions  
-[ucs para rdds ao inves de dataframes?](https://databricks.com/blog/2016/07/14/a-tale-of-three-apache-spark-apis-rdds-dataframes-and-datasets.html#targetText=Conceptually%2C%20consider%20DataFrame%20as%20an,or%20a%20class%20in%20Java.)
-[data lave vs data warehouse?](https://fr.talend.com/resources/data-lake-vs-data-warehouse/)
-[dimensional data modelling in haddop?](https://sonra.io/2017/05/15/dimensional-modeling-and-kimball-data-marts-in-the-age-of-big-data-and-hadoop/)
+[ucs para rdds ao inves de dataframes?](https://databricks.com/blog/2016/07/14/a-tale-of-three-apache-spark-apis-rdds-dataframes-and-datasets.html#targetText=Conceptually%2C%20consider%20DataFrame%20as%20an,or%20a%20class%20in%20Java.)   
+[data lave vs data warehouse?](https://fr.talend.com/resources/data-lake-vs-data-warehouse/)  
+[dimensional data modelling in haddop?](https://sonra.io/2017/05/15/dimensional-modeling-and-kimball-data-marts-in-the-age-of-big-data-and-hadoop/)  
+
+-----
+exercises  
+[Create a crawler and custom classifiers to infer the schema of a data-store source](https://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html)
 
 -----  
 training  
