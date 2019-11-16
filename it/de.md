@@ -33,6 +33,8 @@ capital-expenditure-free.cloud.distributed.system
 + no expensive access devices needed (laptops)
 + pay-as-you-go
 + scale carbon footprint
+incremental
+snapshot
 increased-collaboration.cloud.distributed.system
 + cloud-based workflow enables more visibility and cooperation
 + device agnostic (single requirement: connectivity and a browser)
