@@ -25,7 +25,7 @@
 + exec the script
 
 -----
-**low-level** A solution is to use the ABS service to expose data to external systems, in particular by mounting the blob service to the DBFS, so that the data is written as a `<az-blob>` inside a `<az-blob-container>` of a `<az-blob-storage-account>` through a `<az-data-factory>` that is scheduling the writing to the blob container through a notebook.
+**low-level** A solution is to use the ABS service to expose data to external systems, in particular by mounting the blob service to the DBFS, so that the data is written as a `<az-blob>` inside a `<az-blob-container>` of a `<az-storage-account>` through a `<az-data-factory>` that is scheduling the writing to the blob container through a notebook.
 
 Mind that these resources must reside in a resource group that can be deployed to production, *i.e.*, TODO, so:
 
@@ -37,10 +37,12 @@ Below, a detailed demonstration with concrete examples valid at the date of this
 
 All of the below is related to the resource-group:
 
++ `<az-subscription> = Maersk Line Self-Managed Analytics 01 NP ARM`
++ `<az-subscription-id> = TODO`
 + `<az-blob> = commercialblobdev`
 + `<az-blob-container> = inlanddailydriver`
 + `<az-blob-container-public-access-level> = Container (anonymous read access for containers and blobs)`
-+ `<az-storage-account> = TODO`
++ `<az-storage-account> = commercialblobdev`
 + `<az-storage-account-type> = Storage (general purpose v1)`
 + `<az-data-factory> = eval-comm-platform2-adf`
 
@@ -49,6 +51,7 @@ create ADO pipeline associated with the repository:
 + `<az-ado-organization> = diogopereiramarques`
 + `<az-ado-project> = idd`
 + `<az-ado-repo> = idd-ADB`
++ `<az-ado-repo-branch> = dev`
 + `<az-ado-pipeline-repo> = idd-ADB`
 
 Adding to the repo the *devopsfile.yml* file:
@@ -120,17 +123,65 @@ steps:
 ```
 
 
+Create Key Vault `<az-key-vault>` and a new secret:
+
++ `<az-key-vault-name> = inlandDailyDriverKV`
++ `<az-key-vault-region> = North Europe`
++ `<az-key-vault-resource-group> = <az-resource-group>`
++ `<az-key-vault-subscription> = <az-subscription>`
++ `<az-key-vault-secret-key> = iddK`
++ `<az-key-vault-secret-value>` (*`<az-key-vault>`/Access keys/key1*)
++ `<az-key-vault-dns> = https://<az-key-vault-name>.vault.azure.net/` (*``<az-key-vault>``/Propertie/DNS Name`*)
++ `<az-key-vault-id> = /subscriptions/<az-subscription-id>/resourcegroups/<az-key-vault-resource-group>/providers/Microsoft.KeyVault/vaults/<az-key-vault-name>` (*``<az-key-vault>``/Propertie/Resource ID*)
+
+Edit the scope of the `<az-databricks-nb>` through the service *`<az-databricks-nb-wspace>`#secrets/createScope*:
+
++ `<az-databricks-nb-name> = adbazewtcommbi`
++ `<az-databricks-nb-wspace-scope-name> = <az-databricks-nb-name>_idd_scope`
++ `<az-databricks-nb-wspace-scope-manage-principal> = Creator`
++ `<az-databricks-nb-wspace-scope-dns> = <az-key-vault-dns>`
++ `<az-databricks-nb-wspace-scope-resource-id> = <az-key-vault-id>`
+
+[OPT] upload dump by clicking manually on the blob container:
+
++ `<blob-block-size> = 4MB`
++ `<blob-access-tier> = Cool`
+
+Temporarily mount from `<az-blob-container>` by executing from the synched `<az-databricks-nb>`:
+
+```python
+# mount blob storage container
+dbutils.fs.mount(
+  source = "wasbs://<az-blob-container>@<az-storage-account>.blob.core.windows.net",
+  mount_point = "/mnt/<mount-name>_tmp", # attention
+  extra_configs = {
+    "<conf-key>": dbutils.secrets.get(
+        scope = "<az-databricks-nb-wspace-scope-name>",
+        key = "<az-key-vault-secret-key>"
+    )
+  }
+)
+```
+With `<config-key>` in:
+
++ `fs.azure.account.key.<az-storage-account>.blob.core.windows.net`
++ `fs.azure.sas.<az-blob-container>.<az-storage-account>.blob.core.windows.net`
+
+and `<mount-name> = TODO`
 
 
-TODO  
+```python
+# unmount blob storage container
+dbutils.fs.unmount("/mnt/commbi_intermodal_tmp/inland_daily_driver")
+```
 
-Create Key Vault:
 
-+ `<az-key-vault> = ?`
+
++ `<az-ado-organization> = diogopereiramarques`
 
 end-points:
 
-+ `<az-blob-storage-account-end-point> = http://<az-blob-storage-account>.blob.core.windows.net`
++ `<az-storage-account-end-point> = http://<az-storage-account>.blob.core.windows.net`
 + `<az-blob-container-end-point> = https://<az-blob>.blob.core.windows.net/<az-blob-container>`
 
 
