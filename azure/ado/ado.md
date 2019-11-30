@@ -3,4 +3,4 @@ create organization
 create project
 + `<proj.org.ado> = projorgado`
 + `<visibility.proj.org.ado> = private`
-+ `<version-control.proj.org.ado> = private`
++ `<version-control.proj.org.ado> = git`
