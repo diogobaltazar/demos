@@ -5,10 +5,10 @@ install az-cli on dos and run `az login` on a dos shell. You are lead to a brows
 
 # commands
 
-
-
-| action | `az ` + `<group.subscription>` + command |
+| action | command |
 |---|---|
-|  `<group.subscription> = account`|
-| lst | ``list --output table``|
-| set default | `set --subscription <id.subscription> | <name.subscription>` |
+|  account|
+| lst | ``az account list --output table``|
+| set active subscription | `az account set --subscription <id.subscription> | <name.subscription>` |
+| subscription |
+| list | `az group list --output table` |
