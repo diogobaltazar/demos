@@ -34,10 +34,16 @@ select top 1 current_date from TBL --no matter which tbl
 list tbl column names and data types
 ```sql
 -- teradata
-select ColumnName
+select
+	ColumnName,
+	case
+		when ColumnType is null then 'unavailable'
+		else ColumnType
+	end as ColumnType 
 from DBC.ColumnsV
-where DatabaseName = 'DTST40_SSL_MDM_WRK'
-and TableName = 'TW_VAS_RKEMMOVE'
+where
+	DatabaseName = 'DTST40_SSL_MDM_WRK'
+	and TableName = 'TW_VAS_RKEMMOVE'
 order by ColumnID;
 
 -- pyspark
