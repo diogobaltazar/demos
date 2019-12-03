@@ -42,3 +42,20 @@ get pid/ppid
 ```bash
 echo $$
 ```
+
+create file
+```bash
+# unix
+touch <file-name>
+
+# dos
+New-Item
+   [-Path] <String[]>
+   [-ItemType <String>]
+   [-Value <Object>]
+   [-Force]
+   [-Credential <PSCredential>]
+   [-WhatIf]
+   [-Confirm]
+   [<CommonParameters>]
+```

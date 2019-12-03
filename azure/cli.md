@@ -4,20 +4,21 @@
 install az-cli on dos and run `az login` on a dos shell. You are lead to a browser for the login.
 
 ### [account]()
+``account`` is equivalent to `subscription`  
 list
 ```bash
 az account list --output table
 ```
 
-### [subscription]()
-list
-```bash
-az group list --output table
-```
-
 set active subscription
 ```bash
 az account set --subscription <id.subscription> | <name.subscription>
+```
+
+### [resource groups]()
+list
+```bash
+az group list --output table
 ```
 
 ### [dls](https://docs.microsoft.com/en-us/cli/azure/dls/fs?view=azure-cli-latest)
