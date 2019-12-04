@@ -6,3 +6,8 @@ Don't stage:
     + Generated files like dist folders
     + Dependencies which can be downloaded from a package manager
     + And there might be other reasons (maybe you make little todo.md files)
+    
+list config
+```bash
+git config --list
+```
