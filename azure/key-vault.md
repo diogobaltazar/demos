@@ -1,0 +1,3 @@
+`<secret-scope>` Managing secrets begins with creating a secret scope. A secret scope is collection of individual secrets identified by a name that must be unique within a workspace. The names are considered non-sensitive and are readable by all users in the workspace. A workspace is limited to a maximum of 100 secret scopes.
+
+[src](https://docs.databricks.com/security/secrets/secret-scopes.html#secret-scopes)
