@@ -8,6 +8,3 @@
 + In the azure portal, **commit** by:
     + clicking on the notebook *Revision history*
     + *Save now* on the latest staged changes, adding a commit message
-
-
-    
