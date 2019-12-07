@@ -17,3 +17,7 @@ git checkout <commit-hash>
 git reset <commit-hash>
 git checkout <working-branch>
 ```
+get rid of changes made locally
+```bash
+git checkout <file-name>
+```
