@@ -19,3 +19,12 @@ get rid of changes made locally
 ```bash
 git checkout <file-name>
 ```
+multiple .gitignore: the following too are equivalent
+```bash
+/.gitignore
+   a/b 
+```
+```bash
+/a/.gitignore
+   b 
+```
