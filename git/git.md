@@ -13,9 +13,7 @@ git config --list
 ```
 revert to previous commit
 ```bash
-git checkout <commit-hash>
-git reset <commit-hash>
-git checkout <working-branch>
+TODO
 ```
 get rid of changes made locally
 ```bash
