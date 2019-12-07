@@ -106,7 +106,10 @@ multiple .gitignore: the following too are equivalent
 /.gitignore
    a/b 
 ```
+cancel STAGING/changes for file
 ```bash
+git checkout <file-name>
+```
 + roadmap
    + branches
    + revert
