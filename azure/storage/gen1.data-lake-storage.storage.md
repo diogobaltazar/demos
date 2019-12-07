@@ -21,3 +21,10 @@ reading from blob container
 ```python
 TODO: see nb.py
 ```
+
+deleting from dls: see ``fs.md``  
+
+deleting from blob container
+```python
+TODO
+```
