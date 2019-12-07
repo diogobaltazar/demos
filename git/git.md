@@ -97,6 +97,10 @@ revert to previous commit
 ```bash
 TODO
 ```
+create new branch
+```bash
+git branch
+```
 get rid of changes made locally
 ```bash
 git checkout <file-name>
