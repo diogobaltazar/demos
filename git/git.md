@@ -74,7 +74,7 @@ From https://github.com/<git-usr>/<cr>
 total 1
 <TODO> 1 <usr> <TODO>     <TODO>   <TODO> a/
 ```
-list all branches
+list branches
 ```bash
 $ git branch -a
 ```
@@ -117,3 +117,6 @@ git checkout <file-name>
 + roadmap
    + branches
    + revert
++ exercises
+    1. branch master with `dev`, change ``git.md`` as to cause a merge conflict when merging back the changes to ``master``.
+    1. branch master with `dev`, affect changes, check to master and delete `dev`
