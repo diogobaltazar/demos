@@ -121,3 +121,5 @@ git checkout <file-name>
     1. branch master with `dev`, change ``git.md`` as to cause a merge conflict when merging back the changes to ``master``. Fix the merging, discard `dev` and push to CR.
     1. branch master with `dev`, affect changes, check to master and delete `dev`
     1. change `git.md` from LW2 and push to CR as to provoke a conflict with LR1
+    1. what would happen if changes to a file were made in dev, uncommited, and the branch was switched back to master?
+        + Nothing. The changes are *made in dev* only if they are committed to dev.
