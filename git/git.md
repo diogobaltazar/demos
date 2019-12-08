@@ -118,5 +118,5 @@ git checkout <file-name>
    + branches
    + revert
 + exercises
-    1. branch master with `dev`, change ``git.md`` as to cause a merge conflict when merging back the changes to ``master``.
+    1. branch master with `dev`, change ``git.md`` as to cause a merge conflict when merging back the changes to ``master``. **change from branch master's commit**
     1. branch master with `dev`, affect changes, check to master and delete `dev`
