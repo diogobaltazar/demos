@@ -355,7 +355,7 @@ df = (
   spark
   .read.format('csv')
   .options(header='true', inferschema='true')
-  .load('/path-to-file.csv')
+  .load(BLOB_CONTAINER_MNT_PATH + INLAND_RES_PNL_DUMP_FILE)
 )
 ```
 create dataframe
