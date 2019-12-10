@@ -345,13 +345,11 @@ import pyspark.sql.types as T
 import pyspark.sql.functions as F
 
 # LOCAL
-sc = spark.sparkContext
-
-inland_actual_fields = [
+df_fields = [
   T.StructField('service', T.StringType(), True),
-  ...
 ]
-inland_actual = spark.createDataFrame(pd.DataFrame(inland_actual_fields))
+df_schema = T.StructType(df_fields)
+df = spark.createDataFrame(spark.sparkContext.emptyRDD(), df_schema)
 ```
 dbutils
 ```python
