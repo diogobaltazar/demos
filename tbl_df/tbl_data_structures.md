@@ -351,7 +351,6 @@ inland_actual_fields = [
   T.StructField('service', T.StringType(), True),
   ...
 ]
-inland_actual_schema = T.StructType(inland_actual_fields)
 inland_actual = spark.createDataFrame(pd.DataFrame(inland_actual_fields))
 ```
 dbutils
