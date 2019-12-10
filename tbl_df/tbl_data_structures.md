@@ -1,4 +1,3 @@
-# tables and dataframes
 TBL1
 ```
 id  name    age
@@ -337,6 +336,28 @@ df = (
 )
 df.write.csv('/path-to-file.csv', header = True, mode='overwrite')
 ```
+mount blob
+```python
+dbutils.fs.mount(
+  source = 'wasbs://' + BLOB_CONTAINER + '@' + STORAGE_ACC + '.blob.core.windows.net',
+  mount_point = BLOB_CONTAINER_MNT_PATH,
+  extra_configs = {
+    'fs.azure.account.key.' + STORAGE_ACC + '.blob.core.windows.net': dbutils.secrets.get(
+      scope = DATABRICKS_WSPACE_SCOPE,
+      key = KEY_VAULT_KEY
+    )
+  }
+)
+```
+read csv from blob
+```python
+df = (
+  spark
+  .read.format('csv')
+  .options(header='true', inferschema='true')
+  .load('/path-to-file.csv')
+)
+```
 create dataframe
 ```python
 # IMPORT
@@ -375,8 +396,6 @@ df.select(df.name, F.when(df.age > 4, 1).when(df.age < 3, -1).otherwise(0))
 
 
 -----
-# exercises
-
 
 By ``ages``, get the first 2 ``name`` of the employees with the highest ``id``
 ```
