@@ -349,7 +349,7 @@ dbutils.fs.mount(
   }
 )
 ```
-read csv from blob
+read csv from blob to dataset
 ```python
 df = (
   spark
@@ -357,6 +357,10 @@ df = (
   .options(header='true', inferschema='true')
   .load(BLOB_CONTAINER_MNT_PATH + INLAND_RES_PNL_DUMP_FILE)
 )
+```
+read partitioned orc from datalake to dataset
+```python
+TODO
 ```
 create dataframe
 ```python
