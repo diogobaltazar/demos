@@ -28,5 +28,5 @@ create new pipeline
 + `<dest.dataset.adf> = TODO`
 
 
-\* request integration runtime creation to infrastructure team
+\* request engineering integration runtime creation to infrastructure team
 
