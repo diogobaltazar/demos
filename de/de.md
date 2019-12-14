@@ -10,6 +10,8 @@ lazy-evaluation
 resiliency  
 transactions  
 mutability  
+stream-data
+batch-data
 lineage-graph.computation.dataset  
 + enables:
 + data lineage
@@ -183,6 +185,22 @@ databricks-serverless.spark-cluster.databricks.azure.cloud
 idempotent
 optimize.databricks.azure.cloud
 + Optimize the layout of data stored in DBFS. Optionally optimize a subset of data or colocate data by column.
+datalake
++ framework to ingest different sources/types of data
+    + batch/stream data
+    + ...
++ the data is stored in a **common storage repository**
+    + divided in layers:
+        + raw
+        + cleansed
+        + features/transformed
+        + pub
++ data governance
+    + data access policies
+    + data lineage
++ application layer
+    + dashboards
+    + analytics
 delta-lake.databricks.azure.cloud
 + a data lake is difficult to manage
 + open-source storage layer that adds features/structure to data lake files:
