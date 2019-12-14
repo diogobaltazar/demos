@@ -17,13 +17,28 @@ TBL2
 id  iq     name    age
 
 ```
-
+filter out null
+```python
+df = df.filter(F.col('colname').isNotNull())
+```
+filter by value
+```python
+# value
+df = df.filter(F.col('colname') == F.lit(value))
+```
+aggregate into array
+```python
+ 
+```
 -----
 merge
 ```sql
-
+TODO
 ```
-
+after join eliminate duplicate columns (spark)
+```sql
+# for equal names on both sources, use list naming ['c1'] instead of df1['c1'] == df1['c2']
+```
 get current date
 ```sql
 --teradata
@@ -108,7 +123,7 @@ partitioning/repartitiong
 val x = (1 to 10).toList
 val numbersDf = x.toDF('number')
 numbersDf.rdd.partitions.size # => 4
-numbersDf.write.csv('/Users/powers/Desktop/spark_output/numbers')
+numbersDf.write.csv('/Users/powers/Desktop/spark_output/numbers') 
 # Partition A: 1, 2
 # Partition B: 3, 4, 5
 # Partition C: 6, 7
