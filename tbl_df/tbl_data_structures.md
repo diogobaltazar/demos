@@ -53,7 +53,7 @@ select
 	case
 		when ColumnType is null then 'unavailable'
 		when ColumnType = 'CV' then 'String'
-		when ColumnType = 'I2' then 'Integer'
+		when ColumnType like 'I%' then 'Integer'
 		when ColumnType = 'F' then 'Float'
 		else ColumnType
 	end as ColumnType
