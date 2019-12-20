@@ -52,7 +52,7 @@ select
 	ColumnName,
 	case
 		when ColumnType is null then 'unavailable'
-		when ColumnType = 'CV' then 'String'
+		when ColumnType lie 'C%' then 'String'
 		when ColumnType like 'I%' then 'Integer'
 		when ColumnType = 'F' then 'Float'
 		else ColumnType
