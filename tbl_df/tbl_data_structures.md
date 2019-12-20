@@ -52,8 +52,11 @@ select
 	ColumnName,
 	case
 		when ColumnType is null then 'unavailable'
+		when ColumnType = 'CV' then 'String'
+		when ColumnType = 'I2' then 'Integer'
+		when ColumnType = 'F' then 'Float'
 		else ColumnType
-	end as ColumnType 
+	end as ColumnType
 from DBC.ColumnsV
 where
 	DatabaseName = 'DTST40_SSL_MDM_WRK'
