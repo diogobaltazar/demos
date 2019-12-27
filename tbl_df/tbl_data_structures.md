@@ -498,7 +498,6 @@ df = spark.createDataFrame(
   ],
   ['colA', 'colB', 'colC']
 )
-
 w =  Window.partitionBy(df.colA).orderBy(df.colC)
 df.withColumn('test', F.row_number().over(w).alias('test')).filter(F.col('test') == F.lit(1)).select('colA','colB','colC').show()
 
