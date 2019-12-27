@@ -16,5 +16,9 @@ TODO
 ```
 include notebook inside notebook
 ```python
-TODO
+%run user/relative/path/to/other/notebook/
+```
+rm dir
+```python
+dbutils.fs.rm(relative/path/to/file/, True)
 ```
