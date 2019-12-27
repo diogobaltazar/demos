@@ -20,6 +20,7 @@ data-lineage
 fault-tolerant  
 elastic-search  
 relational-database  
++ big data information systems no longer required **normzalization rules** due to ease on processing big data quantities
 solr 
 scalability.cloud.distributed.system 
 + scale up/down bandwidth demands
