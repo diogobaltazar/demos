@@ -485,4 +485,29 @@ qualify rank() over (
 --4	22	ca	21	200	3
 --1	11	b	11	1.000	5
 
+
+df = spark.createDataFrame(
+  [
+    ('a', 'b', 1),
+    ('a', 'b', 2),
+    ('a', 'b', 3),
+    ('c', 'b', 4),
+    ('a', 'b', 5),
+    ('c', 'b', 6),
+    ('c', 'b', 7),
+  ],
+  ['colA', 'colB', 'colC']
+)
+
+w =  Window.partitionBy(df.colA).orderBy(df.colC)
+df.withColumn('test', F.row_number().over(w).alias('test')).filter(F.col('test') == F.lit(1)).select('colA','colB','colC').show()
+
+"""
++----+----+----+
+|colA|colB|colC|
++----+----+----+
+|   c|   b|   4|
+|   a|   b|   1|
++----+----+----+
+"""
 ```
