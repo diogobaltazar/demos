@@ -301,6 +301,13 @@ durability
 replication    
 port
 proxy
++ reroute **some** web activity
++ only reroutes the browser
++ don't guarantee provacy or security
+vpn
++ reroute all web activity
++ all applications are securely rerouted
++  guarantee provacy or security
 firewall
 ip
 express-route
