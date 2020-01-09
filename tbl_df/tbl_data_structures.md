@@ -372,7 +372,7 @@ read csv from blob to dataset
 df = (
   spark
   .read.format('csv')
-  .options(header='true', inferschema='true')
+  .options(header='true', inferschema='true', delimiter = ';')
   .load(BLOB_CONTAINER_MNT_PATH + INLAND_RES_PNL_DUMP_FILE)
 )
 ```
@@ -509,4 +509,12 @@ df.withColumn('test', F.row_number().over(w).alias('test')).filter(F.col('test')
 |   a|   b|   1|
 +----+----+----+
 """
+```
+cast
+```python
+df = df.select(F.col('col-name').cast(T.DoubleType()))
+```
+replace
+```python
+df.select(F.regexp_replace(F.col('col-name'), '\'', '').alias('col-name'))
 ```
