@@ -1,4 +1,10 @@
+**sync visual studio to databricks**
+[here](https://datathirst.net/blog/2019/3/7/databricks-connect-finally)
+
 Developing sw on the azure databricks browser ui can be quite disturbing. The ado repository should be cloned and developed locally, and executed in the cloud, in the databricks spark cluster.
+
+get remote solution  
+TODO  
 
 visual studio profile
 + choose profile with access rights to the azure devops code repository  
@@ -72,3 +78,4 @@ Updated configuration in C:\Users\Utilizador/.databricks-connect
 * Run `databricks-connect test` to test connectivity
 ```
 + run `databricks-connect test` to test the connetivity and fix all errors
++ execute: `F5`
