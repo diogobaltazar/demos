@@ -10,9 +10,9 @@ imitation game:
 + (C) interrogator trying to understand who's the woman: (A) or (B)
 + replace (A) with a digital computer
 
-MAchine :=
+Machine :=
 + digital computer
-+ carry operations as a human comptuer (follow fixed rules and these alone)
++ carry operations as a human computer (follow fixed rules and these alone)
 + composed of:
     + store
         + finite/infinite (theoretical)
@@ -48,8 +48,8 @@ table of instructions
 
 ## questions
 + What's a sufficiently powerful logical system?
-+ Why isn't the human intellect subject to these limitations?
-+ what's the Halting Problem
-+ Why does each instruction needs to have at max the minimum unit composit lenght in the computer storage?
++ Why isn't the human intellect subject to these limitations? (halting problem)
++ Why does each instruction need to have at max the minimum unit composit lenght in the computer storage? (computer ARCH)
 + why does a digital computer need to have adequate storage to mimic a machine? How do the states of one machine relate to the storage?
 + What in the architecture of a universal machine allows it to mimic any other machine?
++ models for computation arrive after observing how we think biased by the mathematical-logical axiomatic perspective.
