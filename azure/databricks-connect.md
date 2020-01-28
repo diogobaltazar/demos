@@ -1,3 +1,15 @@
+**install databricks-connect windows** [here](https://datathirst.net/blog/2019/4/20/setup-databricks-connect-on-windows)
+
+Check whether the java version is the version 8:
+```bash
+> java -version
+java version "1.8.0_181"
+Java(TM) SE Runtime Environment (build 1.8.0_181-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
+```
+
+Move the java installation dir out of `Program Files` in order not to have a name with spaces.
+
 **sync visual studio to databricks**
 [here](https://datathirst.net/blog/2019/3/7/databricks-connect-finally)
 
@@ -79,3 +91,11 @@ Updated configuration in C:\Users\Utilizador/.databricks-connect
 ```
 + run `databricks-connect test` to test the connetivity and fix all errors
 + execute: `F5`
+
+CONTINUE....
+
+
+-----
+
+[here](https://datathirst.net/blog/2019/4/20/setup-databricks-connect-on-windows)
+
