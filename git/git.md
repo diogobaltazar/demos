@@ -127,6 +127,9 @@ create a new repository `A` from the head of a repository `B`
 ```bash
 git fork <repository-url>
 ```
+hooks  
+events triggered in the git server  
+[src1](https://www.atlassian.com/git/tutorials/git-hooks)  
 + roadmap
    + branches
    + revert
