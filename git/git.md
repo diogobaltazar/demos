@@ -114,6 +114,19 @@ cancel STAGING/changes for file
 ```bash
 git checkout <file-name>
 ```
+add/edit variables of git config
+```bash
+> git config --global <var-name-1>[.<var-name-1>] <var-value>
+```
+list variables of git config
+```bash
+> git config --list
+```
+fork  
+create a new repository `A` from the head of a repository `B`
+```bash
+git fork <repository-url>
+```
 + roadmap
    + branches
    + revert

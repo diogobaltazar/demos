@@ -10,5 +10,5 @@
 
 sync **vs** to code repository
 + TODO
-sync **vs code** to code repository
+sync **vs code** to code repository [here](https://code.visualstudio.com/docs/editor/versioncontrol)
 + TODO
