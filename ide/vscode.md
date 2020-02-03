@@ -9,7 +9,7 @@
 |arrange json *market place*| `ctrl+shift+P > sort JSON` |
 
 sync **vs** to code repository
-+ TODO
++ TODO  
 sync **vs code** to code repository [here](https://code.visualstudio.com/docs/editor/versioncontrol)
 + config global user for git
 ```bash
