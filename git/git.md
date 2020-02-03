@@ -130,6 +130,10 @@ git fork <repository-url>
 hooks  
 events triggered in the git server  
 [src1](https://www.atlassian.com/git/tutorials/git-hooks)  
+Control versioning your own hooks:
+```bash
+$ git config --global core.hookspath .githooks
+```
 + roadmap
    + branches
    + revert
