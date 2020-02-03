@@ -8,5 +8,7 @@
 |move line DIRECTION | `ctrl+DIRECTION`|
 |arrange json *market place*| `ctrl+shift+P > sort JSON` |
 
-sync **vs** to code repository (TODO)  
-sync **vs code** to code repository (TODO)
+sync **vs** to code repository
++ TODO
+sync **vs code** to code repository
++ TODO
