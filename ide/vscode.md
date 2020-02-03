@@ -11,4 +11,7 @@
 sync **vs** to code repository
 + TODO
 sync **vs code** to code repository [here](https://code.visualstudio.com/docs/editor/versioncontrol)
-+ TODO
++ config global user for git
+```bash
+$ git config --global user.mail <email.user>
+```
