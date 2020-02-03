@@ -134,6 +134,12 @@ Control versioning your own hooks:
 ```bash
 $ git config --global core.hookspath .githooks
 ```
+version semantics  
+semantic versioning  
+[src1](https://semver.org/)  
+GitVersion  
+automatic semantic versioning  
+[src1](https://gitversion.readthedocs.io/en/latest/)  
 + roadmap
    + branches
    + revert
