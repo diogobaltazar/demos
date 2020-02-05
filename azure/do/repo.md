@@ -8,3 +8,11 @@
 + In the azure portal, **commit** by:
     + clicking on the notebook *Revision history*
     + *Save now* on the latest staged changes, adding a commit message
+
+Given:
++ the organization `<organization.ado> = org-diogopereiramarques`
++ the project `<project.org.ado>`
++ the repo `<repo.org.ado>`
++ the branch `<dev.branch.repo.org.ado>` branched from `<master.branch.repo.org.ado>`
+
+Clone the repo locally:
