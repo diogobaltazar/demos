@@ -15,23 +15,6 @@
 # newlines indicate the end of a field
 # indentation unit: two spaces
 
----
-# START of configuration file
-
-# object serialization abilities make it a viable replacement for languages like JSON.
-# maps easily into native data structures.
-# human friendly, good choice for doc
-# indentation sensible
-# support comments
-# {
-#   'also': 'supports json'
-#   , 'although': 'the config below is ignored if this block is uncommented'
-#   , 'convert': , 'https://www.json2yaml.com/'
-# }
-# keys must be unique
-# newlines indicate the end of a field
-# indentation unit: two spaces
-
 single quoted string: 'string'
 double quoted string: "string"
 unquoted string: string with whitespace
