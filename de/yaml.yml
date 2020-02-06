@@ -1,0 +1,61 @@
+---
+# START of configuration file
+
+# object serialization abilities make it a viable replacement for languages like JSON.
+# maps easily into native data structures.
+# human friendly, good choice for doc
+# indentation sensible
+# support comments
+# {
+#   'also': 'supports json'
+#   , 'although': 'the config below is ignored if this block is uncommented'
+#   , 'convert': , 'https://www.json2yaml.com/'
+# }
+# keys must be unique
+# newlines indicate the end of a field
+# indentation unit: two spaces
+
+singleq string: 'string'
+doubleq string: "string"
+unquoted string: string with whitespace
+unquoted paragraph blank string: >
+  a blank line
+
+  denotes a paragraph
+unquoted paragraph blank string (trim last char): >-
+  a blank line
+
+  denotes a paragraph
+unquoted paragraph string: |
+  a new line '\n'
+  denotes a paragraph
+unquoted paragraph string (trim last char): |-
+  a new line '\n'
+  denotes a paragraph
+float: 0.1
+natural: 1
+integer: -1
+true: true
+true upper-case: True
+true/on: On
+false/off: Off
+complex array:
+  - complex structure one line: { array one line: [1] }
+  - string
+  - string with whitespace
+  - complex-structure:
+      natural: 1
+complex structure:
+  natural: 0
+  complex-structure: 
+    null value (explicit): null
+    null value (implicit): 
+  array:
+    - string
+
+# END of config file
+...
+---
+# a parser would detect two files 
+singleq string: 'string'
+...
