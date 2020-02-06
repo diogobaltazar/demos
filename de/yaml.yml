@@ -15,8 +15,25 @@
 # newlines indicate the end of a field
 # indentation unit: two spaces
 
-singleq string: 'string'
-doubleq string: "string"
+---
+# START of configuration file
+
+# object serialization abilities make it a viable replacement for languages like JSON.
+# maps easily into native data structures.
+# human friendly, good choice for doc
+# indentation sensible
+# support comments
+# {
+#   'also': 'supports json'
+#   , 'although': 'the config below is ignored if this block is uncommented'
+#   , 'convert': , 'https://www.json2yaml.com/'
+# }
+# keys must be unique
+# newlines indicate the end of a field
+# indentation unit: two spaces
+
+single quoted string: 'string'
+double quoted string: "string"
 unquoted string: string with whitespace
 unquoted paragraph blank string: >
   a blank line
@@ -39,10 +56,10 @@ true: true
 true upper-case: True
 true/on: On
 false/off: Off
-complex array:
+polymorphic array:
   - complex structure one line: { array one line: [1] }
-  - string
-  - string with whitespace
+  -	string
+  -	string with whitespace
   - complex-structure:
       natural: 1
 complex structure:
@@ -57,5 +74,15 @@ complex structure:
 ...
 ---
 # a parser would detect two files 
-singleq string: 'string'
+complex structure field 1: 1
+complex structure field 2: 2
+complex structure field 3:
+	- the dash declares the field to be of type array: >-
+      the colon declares the field
+      to be of type key-value
+    the absence of dash: >- 
+      declares this key-value to
+      belong to the previous key-value
+      structure
+  - # the dash declares another element: null
 ...
