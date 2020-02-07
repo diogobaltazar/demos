@@ -1,5 +1,6 @@
----
 # START of configuration file
+
+---
 
 # object serialization abilities make it a viable replacement for languages like JSON.
 # maps easily into native data structures.
@@ -68,4 +69,8 @@ complex structure field 3:
       belong to the previous key-value
       structure
   - # the dash declares another element: null
+...
+---
+config-file-var : &config-file-var config file var value
+get config file var pointer: *config-file-var
 ...
