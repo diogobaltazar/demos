@@ -1,0 +1,28 @@
+# the same for stages, jobs and steps
+---
+parameters:
+- name: txt_1
+  type: string
+  default: 'default'
+- name: txt_2
+  type: string
+  default: 'default'
+- name: build_steps
+  type: stepList
+  default: [] # datatype of steps
+
+steps:
+  - bash: echo "${{ parameters.txt_1 }}, ${{ parameters.txt_2 }}"
+    displayName: "STEPS 1 - DEFAULT -- ${{ parameters.txt_1 }}, ${{ parameters.txt_2 }}"
+  - ${{ each step in parameters.build_steps }}:
+    - ${{ each pair in step }}: # ITERATIVE INSERTION
+        ${{ pair.key }}: ${{ pair.value }}
+  - ${{ if eq( parameters.txt_2, 'default' ) }}: # logic in the template
+    - bash: | # logic on the VM, in contrast with logic in the pipeline server
+        if [[ "${{ parameters.txt_2 }}" == 'default' ]]; then
+          echo 'No parameter was passed to txt_2'
+        fi
+      displayName: "TEST FOR SYNTAX $(txt_2)"
+  - ${{ if ne( parameters.txt_2, 'default' ) }}:
+    - bash: echo "have received txt_2 value --> ${{ parameters.txt_2 }}"
+...

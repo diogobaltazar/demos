@@ -1,0 +1,21 @@
+# (N1) : Scalar parameters are always treated as strings. For example, eq(parameters['myparam'], true) will almost always return true, even if the myparam parameter is the word false. Non-empty strings are cast to true in a Boolean context. That expression could be rewritten to explicitly compare strings: eq(parameters['myparam'], 'true').
+# File: azure-pipelines.yml
+# if unspecified, the pipeline is triggered regardless
+# trigger:
+# - master
+# (N2) the template keyword specifies a TEMPLATE SEARCH
+# objects:
+# -- parameters
+# -- varaibles
+
+extends:
+  template: templates/azure-pipelines-template.yml # (N2)
+  parameters:
+    is_the_case_that_a: false # set to a non-boolean value to have the build fail
+    is_the_case_that_b: false
+    run_integration_tests: true # (N1) 
+    build_steps: # specify template params
+    - bash: echo "step passed through parameter"
+      displayName: "step passed through parameter"
+    - script: echo "step 2 passed through parameter"
+      displayName: "step 2 passed through parameter"

@@ -1,0 +1,26 @@
+---
+variables:
+  global_variable: value # available to all jobs
+
+jobs:
+- job: job1
+  pool:
+    vmImage: 'ubuntu-16.04'
+  variables:
+    job_variable1: value1 # job1 local var
+  steps:
+  - bash: |
+      echo $(global_variable)
+    displayName: Display name for job step, 'bash' otherwise
+  - bash: echo "$(job_variable1) or $JOB_VARIABLE1, local vars are declared in the process' envspace"
+
+- job: job2
+  pool:
+    vmImage: 'ubuntu-16.04'
+  variables:
+    job_variable2: value2    # this is only available in job2
+  steps:
+  - bash: echo $(global_variable)
+  - bash: echo $(job_variable2)
+  - bash: echo $GLOBAL_VARIABLE
+...

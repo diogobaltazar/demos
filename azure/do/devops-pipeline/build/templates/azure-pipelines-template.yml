@@ -1,0 +1,116 @@
+---
+# stage -> job -> step (bebefits of encapsulation)
+# Templates let you define reusable content, logic, and parameters.
+# Templates function in two ways. You can insert reusable content with a template or you can use a template to control what is allowed in a pipeline.
+# If a template is used to include content, it functions like an include directive in many programming languages. Content from one file is inserted into another file. When a template controls what is allowed in a pipeline, the template defines logic that another file must follow.
+# declaring parameters with datatype and default values
+# check for parameter datatypes: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops
+# TODO: not being able to crt dynamically step name: "str ${{ parameters.param }}"
+# TODO: get SYS ABS PATHS instead of SYS REL PATHS (see template vars for ex)
+# TODO1: add template vars to job variables (try ITERATIVE INSERTION)
+# (N1) : Scalar parameters are always treated as strings. For example, eq(parameters['myparam'], true) will almost always return true, even if the myparam parameter is the word false. Non-empty strings are cast to true in a Boolean context. That expression could be rewritten to explicitly compare strings: eq(parameters['myparam'], 'true').
+# (N2) Parameters are not limited to scalar strings. As long as the place where the parameter expands expects a mapping, the parameter can be a mapping. Likewise, sequences can be passed where sequences are expected. For example:
+# a JSON OBJECT in YAML is called a MAPPING
+# an JSON ARRAY in YALM is called a SEQUENCE
+# When an array is inserted into an array, the nested array is flattened.
+
+parameters:
+- name: is_the_case_that_a
+  type: boolean
+  default: False
+- name: is_the_case_that_b
+  type: boolean
+  default: False
+- name: build_steps
+  type: stepList
+  default: [] # datatype of steps
+- name: run_integration_tests
+  default: True
+  type: boolean
+
+variables:
+  global_variable: value # available to all jobs
+
+# template jobs and ssteps
+stages:
+  - stage: stage1
+    pool:
+      vmImage: 'ubuntu-16.04'
+    jobs:
+    - job: jobneg1
+      variables:
+        - name: var2
+          value: 'default value'
+        - group: var-group.pipeline.project.org.ado
+        - template: ../vars/vars-1.yml
+      steps:
+      - bash: |
+          echo ${{ variables.var1 }}
+          echo ${{ variables.var2 }}
+          echo "value from gen pipeline variables --> $VAR3"
+        displayName: testing reading variables from template vars
+    - job: job0
+      steps:
+        - bash: |
+            echo "${{ parameters['is_the_case_that_a']}} or ${{ parameters.is_the_case_that_b}}"
+          displayName: Executing pipeline bash step through template
+    - job: job1
+      variables:
+        - name: job_variable1
+          value: value1 # job1 local var
+        # - template: ../vars/vars-1.yml # TODO1
+      steps:
+      - bash: |
+          echo "$(global_variable)"
+          echo "$GLOBAL_VARIABLE, vars are declared in the process' envspace at runtime"
+          echo ${{variables.global_variable}}
+        # TODO1
+          # echo ${{ variables.var1 }}
+        displayName: Display name for job step, 'bash' otherwise
+      - bash: echo "$(job_variable1) or $JOB_VARIABLE1 or ${{variables.job_variable1}}, vars are declared in the process' envspace"
+    - job: job2
+      variables:
+        job_variable2: value2    # this is only available in job2
+        job_variable3: value3
+      steps:
+      - bash: echo $(global_variable)
+      - bash: echo $(job_variable2)
+      - bash: echo $(job_variable3)
+      - bash: echo $GLOBAL_VARIABLE
+  - stage: stage2
+    pool:
+      vmImage: 'ubuntu-16.04'
+    jobs:
+    - job: job0
+      # Getting steps from parameter  
+      steps:
+      - bash: |
+          echo "default step before arg steps"
+        displayName: "default step before arg steps"
+      - ${{ each step in parameters.build_steps }}:
+        - ${{ each pair in step }}:
+            ${{ if eq(pair.key, 'bash') }}:
+              ${{ pair.key }}: ${{ pair.value }}
+            # if a step other than 'bash' is passed
+            # it is rejected and the pipeline build fails
+            ${{ if eq(pair.key, 'script') }}:
+              ${{ pair.key }}: ${{ pair.value }}
+      - template: steps-1.yml
+        parameters: # specify template params
+          txt_1: "value passed as template param"
+          ${{ if 'True'}}:
+            txt_2: "value for txt_2 passed as template param"
+          build_steps:
+            - bash: echo "step 1 passed through template param"
+              displayName: "step 1 passed through template param"
+            - script: echo "step 2 passed through template param"
+              displayName: "step 2 passed through template param"
+  - stage: stage3
+    pool:
+      vmImage: 'ubuntu-16.04'
+    jobs:
+    - job: job0
+      steps: # (N1)
+        - ${{ if eq(parameters.run_integration_tests, 'true') }}:
+          - bash: echo "running pseudo integration tests" 
+...
