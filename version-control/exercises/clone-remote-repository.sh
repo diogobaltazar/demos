@@ -1,0 +1,1 @@
+git clone $remote_repository_url

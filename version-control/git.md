@@ -36,7 +36,7 @@ git clone <cr-url>
 ```
 associate `LR` to `CR`
 ```bash
-git add origin <cr-url>
+git remote add origin <cr-url>
 ```
 pull/fetch contents of `CR`
 ```bash
@@ -74,7 +74,7 @@ From https://github.com/<git-usr>/<cr>
 total 1
 <TODO> 1 <usr> <TODO>     <TODO>   <TODO> a/
 ```
-list branches
+list branches (including hiding branches)
 ```bash
 $ git branch -a
 ```
@@ -99,7 +99,11 @@ TODO
 ```
 create new branch
 ```bash
-git branch
+git branch <branch-name>
+```
+change branch
+```bash
+git checkout <branch-name>
 ```
 get rid of changes made locally
 ```bash
