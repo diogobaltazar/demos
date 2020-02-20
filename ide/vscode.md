@@ -6,7 +6,10 @@
 |cut line | `ctrl+k+0`|
 |duplicate line | `ctrl+shift+d`|
 |move line DIRECTION | `ctrl+DIRECTION`|
-|arrange json *market place*| `ctrl+shift+P > sort JSON` |
+|open *market place*| `ctrl+shift+X` |
+|command palette|`ctrl+shift+P`|
+|visual studio settings|`> Open Settings (JSON)`|
+|arrange json *market place*| `> sort JSON` |
 
 sync **vs** to code repository
 + TODO  
