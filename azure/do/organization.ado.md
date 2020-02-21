@@ -1,4 +1,4 @@
-create organization
+An organization is the container for several projects that share resources. Create organization:
 + `<org.ado> = diogopereiramarques`
 create project
 + `<proj.org.ado> = projorgado`

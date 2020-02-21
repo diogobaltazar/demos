@@ -1,0 +1,35 @@
+- backlog:
+  - business:
+    - market_analysis:
+      - competitor analysis
+      - search already existing services
+      - search for chore reports online
+  - product:
+    - features_listing:
+      - cooking
+      - cleaning:
+        - home
+        - clothing
+      - grosseries
+      - laundry
+        - washing
+        - ironing
+    - product_characteristics:
+      - Gamify your chores
+      - if somebody improves her process, it improves the processes for all people in the community
+    - product_definition: chores automation
+    - product_description: | 
+        Happyness is having time for the thinks you feel are meaningful to you.
+        Happy people are better people for society.
+  - tech:
+    - design:
+      - mockup (usage & user-stories)
+    - frontend:
+      - webapp
+      - mobile_app
+    - backend:
+      - cloud-based-solution (Azure)
+      - WebApp (React)
+      - Account Storage
+      - Databricks Cluster
+      - Authentication

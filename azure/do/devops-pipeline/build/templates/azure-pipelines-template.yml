@@ -30,6 +30,7 @@ parameters:
 
 variables:
   global_variable: value # available to all jobs
+  readonly: true
 
 # template jobs and ssteps
 stages:
