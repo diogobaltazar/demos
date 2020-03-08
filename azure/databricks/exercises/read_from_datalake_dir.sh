@@ -1,0 +1,1 @@
+# SP accessing datalake directory
