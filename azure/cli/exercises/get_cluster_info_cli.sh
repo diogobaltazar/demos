@@ -1,0 +1,1 @@
+databricks clusters get --cluster-id $ID_CLUSTER_SPARK
