@@ -8,6 +8,7 @@
 |move line DIRECTION | `ctrl+DIRECTION`|
 |open *market place*| `ctrl+shift+X` |
 |command palette|`ctrl+shift+P`|
+|Quick Open|`ctrl+P`|
 |visual studio settings|`> Open Settings (JSON)`|
 |arrange json *market place*| `> sort JSON` |
 

@@ -8,7 +8,17 @@
         },
         {
             "path": "/home/diogo/ethics"
+        },
+        {
+            "path": "/home/diogo/framework.dataeng"
         }
     ],
-    "settings": {}
+    "settings": {
+        "databricks.connection.default.displayName": "workspace.commercial.maersk",
+        "databricks.connection.default.cloudProvider": "Azure",
+        "databricks.connection.default.apiRootUrl": "https://westeurope.azuredatabricks.net",
+        "databricks.connection.default.personalAccessToken": "dapicafa9b9c0ecd53e5787bc2d4d882407d",
+        "databricks.connection.default.localSyncFolder": "~/sync_folder.databricks_workspace",
+        "python.linting.enabled": false
+    }
 }
