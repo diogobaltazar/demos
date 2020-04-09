@@ -11,6 +11,7 @@
 |Quick Open|`ctrl+P`|
 |visual studio settings|`> Open Settings (JSON)`|
 |arrange json *market place*| `> sort JSON` |
+|replace text| `ctrl+shift+H` |
 
 sync **vs** to code repository
 + TODO  
