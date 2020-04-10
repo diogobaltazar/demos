@@ -1,0 +1,1 @@
+having `module_1/module_2`, at `module_1/__init__.py` write `from .module_2 import *`
