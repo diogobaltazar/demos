@@ -1,0 +1,1 @@
+launch server with `npm app` and make a request with `127.0.0.1:3000`
