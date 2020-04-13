@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>node <%= ids %></title>
+</head>
+    <body>
+        <%- include('partials/nav.ejs') %> 
+        <ul>
+            <% ids.forEach(id => { %>
+                <li><%= id %></li>
+            <% }) %>
+        </ul>
+        <div class="tooltip"></div>
+    </body>
+</html>
