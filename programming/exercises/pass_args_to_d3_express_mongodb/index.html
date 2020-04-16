@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+  <head>
+    <style>
+      .svg-chart .bar { fill: #4682B4; }
+    </style>
+  </head>
+  <body>
+    <%-
+      barChartHelper.getBarChart({
+        data: fixtureData,
+        width: 800,
+        height: 600,
+        xAxisLabel: '2012',
+        yAxisLabel: 'Views',
+        containerId: 'bar-chart-large'
+      })
+    %>
+  </body>
+</html>
