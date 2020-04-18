@@ -1,9 +1,14 @@
-express = require('express')
+const express = require('express')
 _ = require('lodash')
 app = express()
-app.engine('.html', require('ejs').__express)
-app.set('views', __dirname)
-app.set('view engine', 'html')
+// app.engine('.html', require('ejs').__express)
+// app.set('views', __dirname)
+
+// set public path
+app.use('/public', express.static('public'))
+
+// set views
+app.set('view engine', 'ejs')
 
 // establish a connection to the database
 mongoose = require('mongoose')
@@ -29,14 +34,14 @@ Node = require('./model/node')
 bp = require('body-parser')
 url_encoded_parser = bp.urlencoded({ extended: false })
 
-fixtureData = require('./fixture_data.json')
-app.locals.barChartHelper = require('./bar_chart_helper')
+fixtureData = require('./public/data/fixture_data.json')
+app.locals.barChartHelper = require('./public/js/bar_chart_helper')
 
 
 
 // load controller
 require('./controller/node')(app)
 
-port = 3001
+port = 3000
 app.listen(port);
 console.log(`listening on port ${port}`)
