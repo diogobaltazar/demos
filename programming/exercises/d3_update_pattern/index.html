@@ -12,6 +12,7 @@
         .append('svg')
         .attr('height', 1000)
         .attr('width', 500)
+        .style("background-color", '#fa9191')
 
         const svg = d3.select('svg')
 
@@ -23,15 +24,35 @@
             from, to, radius
         })
 
+        edges = d3.range(10).map(_ => create_vertice())
+
+        // with D3, enter, update and exit must be
+        // dealth with explicitly, not like React or Vue. 
+
         svg
-        .selectAll('circle')
-        .data(d3.range(10).map(_ => create_vertice()))
-        .enter()
-        .append('circle')
-        .attr('cx', (_, i) => i * 100)
+        // return data join: able to handle enter, update and exit events
+        .selectAll('circle')                            // get current dom elems
+        .data(edges)  // match these elements with the current elems
+
+        // ENTER: triggered when there are no current dom elements
+        .enter()            // the event
+        .append('circle')   // append to the data elems that have no corresponding dom elems
+        .attr('cx', (_, i) => i * 20 + 100)
         .attr('cy', +svg.attr("height") / 2)
-        .attr('r', 50)
-        
+        .attr('r', 5)
+        .attr('fill', '#eb6383')
+
+        // UPDATE: triggered when there are current dom elems
+        // corresponding to data elements
+
+        edges.pop() // rm one data elem
+
+        // EXIT: when there are dom elems not corresponding
+        // to data elems
+        svg.selectAll('circle').data(edges)
+        .exit()     // the event 
+        .remove()   // the behaviour: rm one dom elem
+
     </script>
 </body>
 </html>
