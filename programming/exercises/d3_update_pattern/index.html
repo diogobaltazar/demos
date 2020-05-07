@@ -16,7 +16,7 @@
 
         const svg = d3.select('svg')
 
-        create_vertice = (id = Math.random() * 100, radius = 10) => ({
+        create_vertice = (id = Math.trunc(Math.random() * 100), radius = 5) => ({
             id, radius
         })
 
@@ -26,32 +26,28 @@
 
         edges = d3.range(10).map(_ => create_vertice())
 
-        // with D3, enter, update and exit must be
-        // dealth with explicitly, not like React or Vue. 
+        console.log(edges)
 
-        svg
-        // return data join: able to handle enter, update and exit events
-        .selectAll('circle')                            // get current dom elems
-        .data(edges)  // match these elements with the current elems
+        const render = (selection, { data }) => {
 
-        // ENTER: triggered when there are no current dom elements
-        .enter()            // the event
-        .append('circle')   // append to the data elems that have no corresponding dom elems
-        .attr('cx', (_, i) => i * 20 + 100)
-        .attr('cy', +svg.attr("height") / 2)
-        .attr('r', 5)
-        .attr('fill', '#eb6383')
+            join = selection.selectAll('circle').data(data)
 
-        // UPDATE: triggered when there are current dom elems
-        // corresponding to data elements
+            join.enter()
+                .append('circle')
+                .attr('cx', (_, i) => i * 20 + 100)
+                .attr('cy', +selection.attr("height") / 2)
+                .attr('r', _ => _.radius)
+                .attr('fill', _ => _.id ? '#eb6383' : '#b4f2e1')
 
-        edges.pop() // rm one data elem
+            join.exit()
+                .remove()
+        }
 
-        // EXIT: when there are dom elems not corresponding
-        // to data elems
-        svg.selectAll('circle').data(edges)
-        .exit()     // the event 
-        .remove()   // the behaviour: rm one dom elem
+        for (i = 2; i <= edges.length + 1; i++)
+            setTimeout(() => {
+                edges.pop()
+                render(svg, { data: edges })
+            }, time = 1000 * i)
 
     </script>
 </body>
