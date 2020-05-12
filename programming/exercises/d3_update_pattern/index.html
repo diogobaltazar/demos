@@ -24,7 +24,7 @@
             from, to, radius
         })
 
-        edges = d3.range(10).map(_ => create_vertice())
+        let edges = d3.range(10).map(_ => create_vertice())
 
         const render = (selection, props) => {
             const { data } = props
@@ -34,14 +34,20 @@
                     .append('circle')
                     .attr('cx', (_, i) => i * 20 + 100)
                     .attr('cy', +selection.attr("height") / 2)
-                    .attr('r', _ => _.radius)
+                    .attr('r', _ => 0)
                 .merge(join) // data elems with dom elems or without elems
                     .attr('fill', _ => _.color)
+                    .transition()
+                        .duration(1000)
+                        .attr('r', _ => _.radius) // enter/update with transition
 
             join // data elems with dom elems
-                .attr('r', _ => _.radius)
+                .style("stroke", '#120136')
 
             join.exit() // dom elems without data elems
+                .transition()
+                    .duration(1000)
+                    .attr('r', _ => 0) // remove with transition
                 .remove()
         }
 
@@ -49,7 +55,9 @@
             setTimeout(
                 i % 2 ? 
                     () => { // trigger exit
-                        edges.pop()
+                        max = edges.length - 1
+                        rvi = Math.trunc(Math.random() * max)
+                        edges = edges.filter((_, i) => i != rvi)
                         render(svg, { data: edges })
                     } :
                     () => { // trigger update
