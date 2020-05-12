@@ -16,7 +16,7 @@
 
         const svg = d3.select('svg')
 
-        create_vertice = (id = Math.trunc(Math.random() * 100), radius = 5, color = '#eb6383') => ({
+        create_vertice = (id = Math.trunc(Math.random() * 100), radius = 10, color = '#eb6383') => ({
             id, radius, color
         })
 
@@ -31,14 +31,15 @@
             join = selection.selectAll('circle').data(data)
 
             join.enter() // data elems without dom elems
-                .append('circle')
-                .attr('cx', (_, i) => i * 20 + 100)
-                .attr('cy', +selection.attr("height") / 2)
-                .attr('r', _ => _.radius)
-                .attr('fill', _ => _.color)
+                    .append('circle')
+                    .attr('cx', (_, i) => i * 20 + 100)
+                    .attr('cy', +selection.attr("height") / 2)
+                    .attr('r', _ => _.radius)
+                .merge(join) // data elems with dom elems or without elems
+                    .attr('fill', _ => _.color)
 
             join // data elems with dom elems
-                .attr('fill', _ => _.color)
+                .attr('r', _ => _.radius)
 
             join.exit() // dom elems without data elems
                 .remove()
@@ -55,6 +56,7 @@
                         max = edges.length - 1
                         rvi = Math.trunc(Math.random() * max)
                         edges[rvi].color = '#b4f2e1'
+                        edges[rvi].radius *= Math.random()
                         render(svg, { data: edges })
                     },
                 time = 1000 * i
