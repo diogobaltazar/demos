@@ -16,8 +16,8 @@
 
         const svg = d3.select('svg')
 
-        create_vertice = (id = Math.trunc(Math.random() * 100), radius = 5) => ({
-            id, radius
+        create_vertice = (id = Math.trunc(Math.random() * 100), radius = 5, color = '#eb6383') => ({
+            id, radius, color
         })
 
         create_edge = (from, to, length) => ({
@@ -26,28 +26,39 @@
 
         edges = d3.range(10).map(_ => create_vertice())
 
-        console.log(edges)
-
         const render = (selection, { data }) => {
 
             join = selection.selectAll('circle').data(data)
 
-            join.enter()
+            join.enter() // data elems without dom elems
                 .append('circle')
                 .attr('cx', (_, i) => i * 20 + 100)
                 .attr('cy', +selection.attr("height") / 2)
                 .attr('r', _ => _.radius)
-                .attr('fill', _ => _.id ? '#eb6383' : '#b4f2e1')
+                .attr('fill', _ => _.color)
 
-            join.exit()
+            join // data elems with dom elems
+                .attr('fill', _ => _.color)
+
+            join.exit() // dom elems without data elems
                 .remove()
         }
 
         for (i = 2; i <= edges.length + 1; i++)
-            setTimeout(() => {
-                edges.pop()
-                render(svg, { data: edges })
-            }, time = 1000 * i)
+            setTimeout(
+                i % 2 ? 
+                    () => { // trigger exit
+                        edges.pop()
+                        render(svg, { data: edges })
+                    } :
+                    () => { // trigger update
+                        max = edges.length - 1
+                        rvi = Math.trunc(Math.random() * max)
+                        edges[rvi].color = '#b4f2e1'
+                        render(svg, { data: edges })
+                    },
+                time = 1000 * i
+            )
 
     </script>
 </body>
