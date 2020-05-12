@@ -26,8 +26,8 @@
 
         edges = d3.range(10).map(_ => create_vertice())
 
-        const render = (selection, { data }) => {
-
+        const render = (selection, props) => {
+            const { data } = props
             join = selection.selectAll('circle').data(data)
 
             join.enter() // data elems without dom elems
