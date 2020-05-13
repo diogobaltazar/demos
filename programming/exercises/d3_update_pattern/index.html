@@ -14,9 +14,20 @@
         .attr('width', 500)
         .style("background-color", '#fa9191')
 
+        const color_scale = d3.scaleOrdinal()
+            .domain(d3.range(10))
+            .range([
+                '#120136', '#035aa6', '#40bad5', '#fcbf1e', '#dbdbdb', 
+                '#f0a500', '#cf7500', '#000000', '#342ead', '#b9ebcc', 
+            ])
+
         const svg = d3.select('svg')
 
-        create_vertice = (id = Math.trunc(Math.random() * 100), radius = 10, color = '#eb6383') => ({
+        create_vertice = (
+            id = Math.trunc(Math.random() * 100),
+            radius = Math.random() * 10,
+            color = '#eb6383'
+        ) => ({
             id, radius, color
         })
 
@@ -24,50 +35,46 @@
             from, to, radius
         })
 
-        let edges = d3.range(10).map(_ => create_vertice())
-
+        let edges = d3.range(10).map((_, i) => create_vertice(
+            Math.trunc(Math.random() * 100),
+            Math.random() * 10,
+            color_scale(i)
+        ))
+ 
         const render = (selection, props) => {
             const { data } = props
             join = selection.selectAll('circle').data(data)
 
-            join.enter() // data elems without dom elems
+            join.enter()
                     .append('circle')
-                    .attr('cx', (_, i) => i * 20 + 100)
                     .attr('cy', +selection.attr("height") / 2)
                     .attr('r', _ => 0)
-                .merge(join) // data elems with dom elems or without elems
+                .merge(join)
                     .attr('fill', _ => _.color)
                     .transition()
-                        .duration(1000)
-                        .attr('r', _ => _.radius) // enter/update with transition
+                        .duration(500)
+                        .attr('r', _ => _.radius)
+                        .attr('cx', (_, i) => i * 20 + 100)
 
-            join // data elems with dom elems
+            join
                 .style("stroke", '#120136')
 
-            join.exit() // dom elems without data elems
+            join.exit()
                 .transition()
                     .duration(1000)
-                    .attr('r', _ => 0) // remove with transition
+                    .attr('r', _ => 0)
                 .remove()
         }
 
         for (i = 2; i <= edges.length + 1; i++)
             setTimeout(
-                i % 2 ? 
-                    () => { // trigger exit
+                () => { // trigger exit
                         max = edges.length - 1
                         rvi = Math.trunc(Math.random() * max)
                         edges = edges.filter((_, i) => i != rvi)
                         render(svg, { data: edges })
-                    } :
-                    () => { // trigger update
-                        max = edges.length - 1
-                        rvi = Math.trunc(Math.random() * max)
-                        edges[rvi].color = '#b4f2e1'
-                        edges[rvi].radius *= Math.random()
-                        render(svg, { data: edges })
                     },
-                time = 1000 * i
+                time = 1500 * i
             )
 
     </script>
