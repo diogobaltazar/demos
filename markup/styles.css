@@ -1,0 +1,80 @@
+.text-gen {
+  font-family: 'Anaheim';
+  font-size: 22px;
+  font-size: 15px;
+}
+.div-shape-gen {
+  padding: 2px;
+  margin: 2px;
+  text-align: left;
+  border-radius: 3px;
+  width: 80px;
+}
+body {
+  background-color: #222831;
+  color: #f79071;
+}
+.label-1 {
+  padding: 2px;
+  margin: 2px;
+  text-align: left;
+  border-radius: 3px;
+  width: 80px;
+  background-color: #30475e;
+  color: #c1a57b;
+}
+/* used to define rule '.label-2 > #sixth' */
+.label-2 {
+  /* stub */
+}
+/* target elements 'sixth' with
+parent element of class '.-label-2',
+the rule below will not override
+this one. It would override if we had
+defined '.label-2 #sixth' */
+.label-2 > #sixth {
+  color: #fa744f;
+}
+/* target elements 'fst' with
+parent element of class '.label-1',
+target 'sixth' elements */
+.label-1 #fst,
+#sixth {
+  color: #ececec;
+}
+/* R3: target p elements that follow 
+iommediately a div element */
+div + p {
+  padding: 2px;
+  margin: 2px;
+  text-align: left;
+  border-radius: 3px;
+  width: 80px;
+  background-color: #30475e;
+}
+/* R4: target p elements preceded by p
+elements (the first p element is not
+targeted */
+p ~ p {
+  padding: 2px;
+  margin: 2px;
+  text-align: left;
+  border-radius: 3px;
+  width: 80px;
+  background-color: #0779e4;
+}
+/* R5: target elements p with child 
+elements class '.label-2', overrides R4 */
+p.label-2 {
+  background-color: #4cbbb9;
+}
+/* R6: all elements with 'id' attribute */
+[id] {
+  font-weight: bold;
+}
+/* R7: all elements with 'id' attribute
+with value 'r7' */
+[id=r7] {
+  font-weight: bold;
+  font-style: italic;
+}
