@@ -1,6 +1,6 @@
 echo "> merge b to master"
 echo "> commiting from b"
-git commint -a -m "b commit"
+git commit -a -m "b commit"
 
 echo "> checking out to master"
 git checkout master
