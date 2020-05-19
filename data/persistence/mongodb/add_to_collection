@@ -1,0 +1,1 @@
+db.$collection.insertMany($item_objects_array)
