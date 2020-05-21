@@ -44,19 +44,36 @@
 
             data_join = selection.selectAll('circle').data(data)
 
-            // handler of the enter event:
-            // - data elems with no dom elems to bind to
-            // These elems will be assigned dom elems styled as
-            // circles, with cx, cy coordinates, radius and color.
             data_join.enter()
                 .append('circle')
                 .attr('cy', +selection.attr("height") / 2)
-                .attr('cx', (_, i) => i * 50 + 60)
+                .attr('cx', (_, i) => i * 50 + 30)
                 .attr('r', 10)
                 .attr('fill', _ => _.color)
+
+            // handler of the exit event:
+            // - dom elems with no data elems to bind to
+            // These elems will be recolored to black, resized to radius
+            // 0 and then removed
+            data_join.exit()
+                .transition().duration(500)
+                    .attr('fill', 'black')
+                    .attr('r', 0)
+                    .remove()
         }
 
-        render(svg, { data: vertices })
+        setTimeout(
+            () => { render(svg, { data: vertices }) },
+            1000
+        )
+
+        setTimeout(
+            () => { 
+                vertices.pop() // trigger exit event
+                render(svg, { data: vertices }) 
+            },
+            2000
+        )
 
     </script>
 </body>
