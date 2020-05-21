@@ -23,19 +23,17 @@
 
         const svg = d3.select('svg')
 
-        create_vertice = (
+        const create_vertice = (
             id = Math.trunc(Math.random() * 100),
             radius = Math.random() * 10,
-            color = '#eb6383'
+            color = '#eb6383',
+            code = null,
+            name = null,
         ) => ({
-            id, radius, color
+            id, radius, color, code, name
         })
 
-        create_edge = (from, to, length) => ({
-            from, to, radius
-        })
-
-        let edges = d3.range(10).map((_, i) => create_vertice(
+        let vertices = d3.range(10).map((_, i) => create_vertice(
             Math.trunc(Math.random() * 100),
             Math.random() * 10,
             color_scale(i)
@@ -43,39 +41,14 @@
  
         const render = (selection, props) => {
             const { data } = props
+
+            // create data join
+            // - selectAll('circles') == [], there are no circle elems
+            // - data(data), bind data elems to dom elems
             join = selection.selectAll('circle').data(data)
-
-            join.enter()
-                    .append('circle')
-                    .attr('cy', +selection.attr("height") / 2)
-                    .attr('r', _ => 0)
-                .merge(join)
-                    .attr('fill', _ => _.color)
-                    .transition()
-                        .duration(500)
-                        .attr('r', _ => _.radius)
-                        .attr('cx', (_, i) => i * 20 + 100)
-
-            join
-                .style("stroke", '#120136')
-
-            join.exit()
-                .transition()
-                    .duration(1000)
-                    .attr('r', _ => 0)
-                .remove()
         }
 
-        for (i = 2; i <= edges.length + 1; i++)
-            setTimeout(
-                () => { // trigger exit
-                        max = edges.length - 1
-                        rvi = Math.trunc(Math.random() * max)
-                        edges = edges.filter((_, i) => i != rvi)
-                        render(svg, { data: edges })
-                    },
-                time = 1500 * i
-            )
+        render(svg, { data: vertices })
 
     </script>
 </body>
