@@ -44,17 +44,20 @@
 
             data_join = selection.selectAll('circle').data(data)
 
+            // handler of the update event:
+            // - data elems with dom elems to bind to
+            // These elements will have a radius of 20 or of 10
+            data_join
+                .transition().duration(500)
+                    .attr('r', _ => _.name == 'ok' ? 20 : 10)
+
             data_join.enter()
                 .append('circle')
                 .attr('cy', +selection.attr("height") / 2)
                 .attr('cx', (_, i) => i * 50 + 30)
-                .attr('r', 10)
+                .attr('r', _ => _.name == 'ok' ? 20 : 10)
                 .attr('fill', _ => _.color)
 
-            // handler of the exit event:
-            // - dom elems with no data elems to bind to
-            // These elems will be recolored to black, resized to radius
-            // 0 and then removed
             data_join.exit()
                 .transition().duration(500)
                     .attr('fill', 'black')
@@ -69,10 +72,18 @@
 
         setTimeout(
             () => { 
-                vertices.pop() // trigger exit event
+                vertices.pop()
                 render(svg, { data: vertices }) 
             },
             2000
+        )
+
+        setTimeout(
+            () => {
+                vertices[0].name = 'ok' // trigger update event
+                render(svg, { data: vertices })
+            },
+            3000
         )
 
     </script>
