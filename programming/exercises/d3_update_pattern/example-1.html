@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<script src='https://d3js.org/d3.v5.js'></script>
+</head>
+<body>
+    <script type="text/javascript">
+
+        d3
+        .select('body')
+        .append('svg')
+        .attr('height', 1000)
+        .attr('width', 500)
+        .style("background-color", '#fa9191')
+
+        const color_scale = d3.scaleOrdinal()
+            .domain(d3.range(10))
+            .range([
+                '#120136', '#035aa6', '#40bad5', '#fcbf1e', '#dbdbdb', 
+                '#f0a500', '#cf7500', '#000000', '#342ead', '#b9ebcc', 
+            ])
+
+        const svg = d3.select('svg')
+
+        const create_vertice = (
+            id = Math.trunc(Math.random() * 100),
+            radius = Math.random() * 10,
+            color = '#eb6383',
+            code = null,
+            name = null,
+        ) => ({
+            id, radius, color, code, name
+        })
+
+        let vertices = d3.range(10).map((_, i) => create_vertice(
+            Math.trunc(Math.random() * 100),
+            Math.random() * 10,
+            color_scale(i)
+        ))
+ 
+        const render = (selection, props) => {
+            const { data } = props
+
+            // A: { "data elems unbinded to dom elems" } = B.enter()
+            // B: { "binded data elems and dom elems" }
+            // C: { "dom elems unbinded to data elems" } = B.exit()
+            // A U B = A.merge(B)
+
+            let B = selection.selectAll('circle').data(data)
+
+            let A = B.enter()
+                .append('circle')
+                .attr('cy', +selection.attr("height") / 2)
+                .attr('cx', (_, i) => i * 50 + 30)
+                .attr('r', 10)
+                .attr('fill', _ => _.color)
+
+            B.attr('fill', _ => 'green')
+
+            let AUB = A.merge(B)
+                .transition().duration(500)
+                    .attr('r', _ => _.name == 'ok' ? 20 : 10)
+
+            let C = B.exit()
+                .transition().duration(500)
+                    .attr('fill', 'black')
+        }
+
+        setTimeout(
+            // A: { "all data elems" }
+            // B: {}
+            // C: {}
+            () => { render(svg, { data: vertices }) },
+            1000
+        )
+
+        setTimeout(
+            // A: { }
+            // B: { "9 data elems" }
+            // C: { "1 circle elem" }
+            () => { 
+                vertices.pop()
+                render(svg, { data: vertices }) 
+            },
+            2000
+        )
+
+        setTimeout(
+            // A: {}
+            // B: { "10 data elems" }
+            // C: {}
+            () => {
+                vertices.push(create_vertice(
+                    Math.trunc(Math.random() * 100),
+                    Math.random() * 10,
+                    color_scale(3)
+                ))
+                render(svg, { data: vertices })
+            },
+            3000
+        )
+
+    </script>
+</body>
+</html>
