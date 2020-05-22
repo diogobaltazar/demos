@@ -52,44 +52,53 @@
             let A = B.enter()
                 .append('circle')
                 .attr('cy', +selection.attr("height") / 2)
-                .attr('cx', (_, i) => i * 50 + 30)
+                .attr('cx', (_, i) => i * 30 + 30)
                 .attr('r', 10)
                 .attr('fill', _ => _.color)
 
             B.attr('fill', _ => 'green')
 
             let AUB = A.merge(B)
-                .transition().duration(500)
-                    .attr('r', _ => _.name == 'ok' ? 20 : 10)
+                .transition().duration(1000)
+                    .attr('fill', _ => 'red')
+                    .attr('r', _ => _.name == 'inc' ? 15 : 10)
 
             let C = B.exit()
-                .transition().duration(500)
+                .transition().duration(1000)
                     .attr('fill', 'black')
+                    .attr('r', 0)
+                    .remove()
         }
 
         setTimeout(
             // A: { "all data elems" }
             // B: {}
             // C: {}
+            // 1000: all with random colors
+            // 2000: all red
             () => { render(svg, { data: vertices }) },
             1000
         )
 
         setTimeout(
-            // A: { }
+            // A: {}
             // B: { "9 data elems" }
             // C: { "1 circle elem" }
+            // 3000: 9 green, 1 black and remove it
+            // 4000: 9 red
             () => { 
                 vertices.pop()
-                render(svg, { data: vertices }) 
+                render(svg, { data: vertices })
             },
-            2000
+            3000
         )
 
         setTimeout(
-            // A: {}
+            // A: { "1 data elem" }
             // B: { "10 data elems" }
             // C: {}
+            // 5000: 1 random color, 9 green
+            // 6000: 10 red
             () => {
                 vertices.push(create_vertice(
                     Math.trunc(Math.random() * 100),
@@ -98,8 +107,38 @@
                 ))
                 render(svg, { data: vertices })
             },
-            3000
+            5000
         )
+
+        setTimeout(
+            // A: { "1 data elem" }
+            // B: { "10 data elems" }
+            // C: {}
+            // 7000: 1 random, 10 green
+            // 8000: 11 red
+            () => {
+                vertices.push(create_vertice(
+                    Math.trunc(Math.random() * 100),
+                    Math.random() * 10,
+                    color_scale(3)
+                ))
+                render(svg, { data: vertices })
+            },
+            7000
+        )
+
+        setTimeout(
+                // A: { }
+                // B: { "11 data elems" }
+                // C: {}
+                // 9000: 11 green
+                // 10000: 11 red, fst with radius 15
+                () => {
+                    vertices[0].name = 'inc'
+                    render(svg, { data: vertices })
+                },
+                8000
+            )
 
     </script>
 </body>

@@ -42,23 +42,34 @@
         const render = (selection, props) => {
             const { data } = props
 
-            data_join = selection.selectAll('circle').data(data)
+            // A: { "data elems unbinded to dom elems" } = B.enter()
+            // B: { "binded data elems and dom elems" }
+            // C: { "dom elems unbinded to data elems" } = B.exit()
+            // A U B = A.merge(B)
 
+            let B = selection.selectAll('circle').data(data)
+            console.log(B)
             // handler of the update event:
             // - data elems with dom elems to bind to
             // These elements will have a radius of 20 or of 10
-            data_join
-                .transition().duration(500)
-                    .attr('r', _ => _.name == 'ok' ? 20 : 10)
+            // let update_selection = data_join
+            //     .transition().duration(500)
+            //         .attr('r', _ => _.name == 'ok' ? 20 : 10)
 
-            data_join.enter()
+            let A = B.enter()
                 .append('circle')
                 .attr('cy', +selection.attr("height") / 2)
                 .attr('cx', (_, i) => i * 50 + 30)
-                .attr('r', _ => _.name == 'ok' ? 20 : 10)
+                .attr('r', 10)
                 .attr('fill', _ => _.color)
 
-            data_join.exit()
+            B.attr('fill', _ => 'green')
+
+            let AUB = A.merge(B)
+                .transition().duration(500)
+                    .attr('r', _ => _.name == 'ok' ? 20 : 10)
+
+            let C = B.exit()
                 .transition().duration(500)
                     .attr('fill', 'black')
                     .attr('r', 0)
@@ -66,11 +77,17 @@
         }
 
         setTimeout(
+            // A: { "all data elems" }
+            // B: {}
+            // C: {}
             () => { render(svg, { data: vertices }) },
             1000
         )
 
         setTimeout(
+            // A: { }
+            // B: { "9 data elems" }
+            // C: { "1 circle elem" }
             () => { 
                 vertices.pop()
                 render(svg, { data: vertices }) 
@@ -80,7 +97,11 @@
 
         setTimeout(
             () => {
-                vertices[0].name = 'ok' // trigger update event
+                vertices.append(create_vertice(
+                    Math.trunc(Math.random() * 100),
+                    Math.random() * 10,
+                    color_scale(i)
+                ))
                 render(svg, { data: vertices })
             },
             3000
