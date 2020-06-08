@@ -1,0 +1,26 @@
+{
+  "name": "network_graph",
+  "version": "0.0.1",
+  "description": "generic network graph",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diogobaltazar/network_graph.git"
+  },
+  "author": "diogo pereira marques",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diogobaltazar/network_graph/issues"
+  },
+  "homepage": "https://github.com/diogobaltazar/network_graph#readme",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "less": "^3.11.1",
+    "less-watch-compiler": "^1.14.6",
+    "nodemon": "^2.0.4"
+  }
+}
