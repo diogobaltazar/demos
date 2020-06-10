@@ -1,0 +1,67 @@
+// .ccontainer {
+//     display: flex; /* or inline-flex */
+    
+//     /* The direction flex items are placed in the flex container */
+//     flex-direction: row; /* row-reverse | column | column-reverse */
+
+//     /* wrap: wrap top to bottom */
+//     flex-wrap: nowrap; /* | wrap | wrap-reverse */
+// }
+
+// .iitem {
+//     /*  order property controls the order in which they appear in the
+//         flex container. Order in Z.
+    
+//     */
+//     order: 5; /* default is 0 */
+
+//     /*  when the parent container grows in size, distribute space
+//         proportionally to the flew-grow value. Flex-grow in N.
+//     */
+//     flex-grow: 4;
+
+//     /*  when the parent container decreases in size, distribute space
+//         proportionally to the flew-grow value. Flex-grow in N.
+//     */
+//     flex-shrink: 3;
+
+//     /*  shorthand for the flex-direction and flex-wrap
+//     */
+//     flex-flow: column wrap; /* column | row | wrap | nowrap */
+
+//     /* the default size of an element before the remaining space is distributed */
+//     flex-basis:  20px;
+
+//     /* shorthand for flex-grow, flex-shrink and flex-basis */
+// }
+
+// /* Example */
+@import 'constants/color.less';
+@import 'constants/whitespace.less';
+// @import 'constants/border.less';
+
+@import 'template/main.less';
+@import 'template/header.less';
+@import 'template/nav.less';
+@import 'template/article.less';
+@import 'template/aside.less';
+@import 'template/footer.less';
+
+// top,
+// bottom,
+// left, central, right {
+//   border: 1px solid black;
+//   padding: 0.25em;
+//   margin: 0.25em;
+//   border-radius: 0.25em;
+// }
+header,
+footer,
+nav,
+article,
+aside {
+    border: 1px solid @blue;
+    padding: 0.25em;
+    margin: 0.25em;
+    border-radius: 0.25em;
+}
