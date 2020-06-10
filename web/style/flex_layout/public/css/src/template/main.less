@@ -1,3 +1,21 @@
+/*
+    The basic styles of an HTML element, such as the <h1> tag for example,
+    comes from the browser user agent stylesheet, and not from the initial
+    value of the properties of CSS.
+
+    Properties are 'inherited' or 'non-inherited' depending on their type.
+    'inherited' properties can be 'unset'.
+
+    reading:
+    - https://medium.com/@elad/understanding-the-initial-inherit-and-unset-css-keywords-2d70b7121695
+*/
+
+@import '../constants/size.less';
+@import '../constants/font.less';
+@import '../constants/color.less';
+@import '../template/item.less';
+@import '../template/container.less';
+
 .hbox {
     display                 : -webkit-box;
     display                 : -moz-box;
@@ -61,10 +79,21 @@ html, body, .viewport {
     flex                : 1;
   }
 
-.container {
-    display: flex !important;
+/**
+*   All divs are container and item classed with fixed original size
+*/
+div {
+    .container;
+    .item;
 }
 
-.item{
-    display: flex !important;
+body, section{
+    /*  cancel inherited properties 
+    */
+    border          : 0px !important;
+    padding         : 0em !important;
+    margin          : 0em !important;
+    border-radius   : 0em !important;
+
+    background-color  : @white !important;
 }
