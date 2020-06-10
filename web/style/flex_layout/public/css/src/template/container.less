@@ -29,6 +29,9 @@ header, article, footer{
                 - column         : same as row but top to bottom
                 - column-reverse : same as row-reverse but bottom to top
 
+            If the MAIN-AXIS is row, then the CROSS_AXIS is column. If the
+            MAIN-AXIS is column, the CROSS-AXIS is row.
+
             flex-wrap
 
             By default, flex items will all try to fit onto one line. You can change
@@ -52,7 +55,7 @@ header, article, footer{
         /*     
             justify-content
 
-            Defines the alignment along the main axis. It helps distribute extra
+            Defines the alignment along the MAIN-AXIS. It helps distribute extra
             free space leftover when either all the flex items on a line are
             inflexible, or are flexible but have reached their maximum size.
             It also exerts some control over the alignment of items when they
@@ -105,10 +108,42 @@ header, article, footer{
         justify-content: center;
 
         /*
+            This aligns a flex container’s lines within when there is extra
+            space in the CROSS-AXIS, similar to how justify-content aligns
+            individual items within the main-axis.
+
+            Note: this property has no effect when there is only one line of
+            flex items.
+
+                - flex-start / start: items packed to the start of the
+                container. The (more supported) flex-start honors the
+                flex-direction while start honors the writing-mode
+                direction.
+                - flex-end / end: items packed to the end of the container.
+                The (more support) flex-end honors the flex-direction while
+                end honors the writing-mode direction.
+                - center: items centered in the container
+                - space-between: items evenly distributed; the first line is
+                at the start of the container while the last one is at the end
+                - space-around: items evenly distributed with equal space
+                around each line
+                - space-evenly: items are evenly distributed with equal space
+                around them
+                - stretch (default): lines stretch to take up the remaining
+                space
+            
+            The safe and unsafe modifier keywords can be used in conjunction
+            with all the rest of these keywords (although note browser support),
+            and deal with helping you prevent aligning elements such that the
+            content becomes inaccessible.
+        */
+        align-content: center;
+
+        /*
             align-items
 
-            Default behavior for how flex items are laid out along the cross
-            axis on the current line. Think of it as the justify-content
+            Default behavior for how flex items are laid out along the
+            CROSS-AXIS on the current line. Think of it as the justify-content
             version for the cross-axis (perpendicular to the main-axis).
 
                 - stretch (default) : stretch to fill the container (still
@@ -128,12 +163,24 @@ header, article, footer{
             and deal with helping you prevent aligning elements such that the
             content becomes inaccessible.
         */
-        align-items: stretch;
+        align-items: center;
     }
 }
 
-nav, aside{
-    &.container {
-        flex-flow: column wrap;
-    }
+nav.container {
+    flex-flow       : column wrap;
+    justify-content : center;
+    align-content   : center;
+    align-items     : center;
+}
+
+aside.container {
+    flex-flow       : column wrap;
+    justify-content : center;
+    align-content   : center;
+    align-items     : center;
+}
+
+header.container {
+    justify-content : left;
 }
