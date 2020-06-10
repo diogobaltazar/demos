@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /*
+            (1) 
+
+            HTML elements do not have initial style values! The basic styles
+            of an HTML element, such as the <h1> tag for example, comes from
+            the browser user agent stylesheet, and not from the initial value
+            of the properties of CSS.
+                
+            'inherit' tells the browser to search for the closest parent
+            element’s value and let the current element inherit that value.
+
+                - 'inherit' find user-agent recursively in parents, 'initial'
+                otherwise.
+
+            Every property in CSS has a default value, denoted by 'initial'.
+
+            Inherited properties — properties that affect their children. All
+            the properties which affect text have this natural behavior. For
+            example, if we define a font-size on the HTML element, it will
+            apply to all HTML elements until you set another font-size on an
+            inner HTML element style, either 'initial' or user-defined.
+
+            Non-inherited properties — All the other natural properties, which
+            affect only the element which they define. These are all of the
+            properties that don’t apply to text. For example, if you put a
+            border on a parent element, its child will not get a border.
+
+                - 'unset' will act as 'inherit' if property is 'Inheritable'
+                - 'unset' will act as 'initial' otherwise
+        */
+        .c {
+            /* inherited implicitly */
+            color: blue; 
+            display: block;
+
+            /* inherited explicitly */
+            border: 2px solid black; 
+            height: 100px;
+            width: 100px;
+            margin: 20px;
+        }
+
+        div{
+            border: inherit;
+            height: inherit;
+            width: inherit;
+            margin: inherit;
+        }
+
+        .e{
+            border: 2px solid black; 
+        }
+        .d{
+            height: initial;
+            width: initial;
+            border: 2px solid black; 
+        }
+    </style>
+</head>
+<body >
+    <div class='c'>
+        <p>(1.1)</p> declare parent properties
+        <div >
+            <p>(1.2)</p> inherit parent's properties
+            <div style="height: 200px; width: 200px; color: initial;">
+                <p>(1.3)</p> overriding parent's properties
+                <div style='margin: unset;'>
+                    <p style='display: unset;'>(2.1)</p> overriding parent's properties
+                    <div style='all: unset;'>
+                        <p style='all: unset;'>(3.1)</p> overriding all properties
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='e'>
+        there's clearly a difference between setting to 'initial' and not setting at all
+        <div class='d'>
+        </div>
+    </div>
+</body>
+</html>

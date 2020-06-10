@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .c {
+            border: 2px solid lightslategray; 
+            background-color: lightblue;
+            height: 100px;
+            width: 100px;
+            margin: 20px;
+        }
+
+        /* target all but footer */
+        :not(footer){
+            border: 2px solid lightseagreen !important;
+        }
+
+        /* target all .c but footer.c */
+        .c:not(footer){
+            background-color: lightsalmon;
+        }
+
+    </style>
+</head>
+<body >
+    <header class='c'>
+    </header>
+
+    <footer class='c'>
+    </footer>
+</body>
+</html>

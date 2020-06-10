@@ -1,0 +1,1 @@
+$('#elem_id').attr('style', 'width: 1px !important')
