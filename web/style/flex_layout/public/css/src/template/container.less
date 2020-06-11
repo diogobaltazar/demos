@@ -1,10 +1,10 @@
 /**
 *   Container class
 */
-.container {
-    display         : flex !important;
-    background-color: @yellow;
-    border          : 1px solid @yellow-darker;
+.my-container {
+    // display         : flex !important;
+    background-color: @green-darker;
+    border          : 1px solid @green;
     padding         : 0.25em;
     margin          : 0.25em;
     border-radius   : 0.1em;
@@ -15,7 +15,7 @@
 }
 
 header, article, footer{
-    &.container {
+    &.my-container {
         /* 
             flex-direction
 
@@ -50,7 +50,7 @@ header, article, footer{
             
                 - row nowrap (default)
         */
-        flex-flow: row wrap;
+        // flex-flow: row wrap;
 
         /*     
             justify-content
@@ -105,7 +105,7 @@ header, article, footer{
                 renders off-screen (e.g. off the top) in such a way the content
                 can’t be scrolled too (called “data loss”).
         */
-        justify-content: center;
+        // justify-content: center;
 
         /*
             This aligns a flex container’s lines within when there is extra
@@ -137,7 +137,7 @@ header, article, footer{
             and deal with helping you prevent aligning elements such that the
             content becomes inaccessible.
         */
-        align-content: center;
+        // align-content: center;
 
         /*
             align-items
@@ -163,24 +163,29 @@ header, article, footer{
             and deal with helping you prevent aligning elements such that the
             content becomes inaccessible.
         */
-        align-items: center;
+        // align-items: center;
     }
 }
 
-nav.container {
-    flex-flow       : column wrap;
-    justify-content : center;
-    align-content   : center;
-    align-items     : center;
+nav.my-container {
+    // flex-flow       : column wrap;
+    // justify-content : center;
+    // align-content   : center;
+    // align-items     : center;
 }
 
-aside.container {
-    flex-flow       : column wrap;
-    justify-content : center;
-    align-content   : center;
-    align-items     : center;
+aside.my-container {
+    // flex-flow       : column wrap;
+    // justify-content : center;
+    // align-content   : center;
+    // align-items     : center;
 }
 
-header.container {
-    justify-content : left;
+header.my-container {
+    // justify-content : left;
+}
+
+.no-padding-margin{
+    padding : 0em !important;
+    margin  : 0em !important;
 }
