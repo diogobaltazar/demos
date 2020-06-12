@@ -1,0 +1,99 @@
+/*
+    The basic styles of an HTML element, such as the <h1> tag for example,
+    comes from the browser user agent stylesheet, and not from the initial
+    value of the properties of CSS.
+
+    Properties are 'inherited' or 'non-inherited' depending on their type.
+    'inherited' properties can be 'unset'.
+
+    reading:
+    - https://medium.com/@elad/understanding-the-initial-inherit-and-unset-css-keywords-2d70b7121695
+*/
+
+@import '../constants/size.less';
+@import '../constants/font.less';
+@import '../constants/color.less';
+@import '../template/item.less';
+@import '../template/container.less';
+
+.hbox {
+    display                 : -webkit-box;
+    display                 : -moz-box;
+    display                 : -ms-box;
+    display                 : box;
+    -webkit-box-orient      : horizontal;
+    -moz-box-orient         : horizontal;
+    -ms-box-orient          : horizontal;
+    box-orient              : horizontal;
+
+    display                 : -webkit-flex;
+    display                 : -moz-flex;
+    display                 : -ms-flex;
+    display                 : flex;
+    -webkit-flex-direction  : row;
+    -moz-flex-direction     : row;
+    -ms-flex-direction      : row;
+    flex-direction          : row;
+}
+
+.vbox {
+    display                 : -webkit-box;
+    display                 : -moz-box;
+    display                 : box;
+    -webkit-box-orient      : vertical;
+    -moz-box-orient         : vertical;
+    -ms-box-orient          : vertical;
+    box-orient              : vertical;
+
+    display                 : -webkit-flex;
+    display                 : -moz-flex;
+    display                 : -ms-flex;
+    display                 : flex;
+    -webkit-flex-direction  : column;
+    -moz-flex-direction     : column;
+    -ms-flex-direction      : column;
+    flex-direction          : column;
+}
+
+/*
+  Frce the layout to always be full screen regardless of how much,
+  or how little, content is in place.
+*/
+html, body, .viewport {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.main {
+    /* previous syntax */
+    -webkit-box-flex    : 1;
+    -moz-box-flex       : 1;
+    -ms-box-flex        : 1;
+    box-flex            : 1;
+
+    /* current syntax */
+    -webkit-flex        : 1;
+    -moz-flex           : 1;
+    -ms-flex            : 1;
+    flex                : 1;
+  }
+
+/**
+*   All divs are container and item classed with fixed original size
+*/
+div {
+    .my-container;
+    .my-item;
+}
+
+body, section{
+    /*  cancel inherited properties 
+    */
+    border          : 0px !important;
+    padding         : 0em !important;
+    margin          : 0em !important;
+    border-radius   : 0em !important;
+
+    background-color  : @white !important;
+}
