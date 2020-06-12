@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./public/css/dist/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<title>auto-margin.bootstrap-flex</title>
+<body class='vbox viewport'>
+    <header class='my-container'>
+        
+    </header>
+    <section class="main hbox space-between whitespace">
+        <nav class='my-container'>
+        </nav>
+        <article class='my-container'>
+            main-axis: X/row
+            <div class='my-container no-padding-margin d-flex flex-column'>
+                <div class="my-container no-padding-margin d-flex flex-row">
+                    <div class="">none</div>
+                    <div class="">none</div>
+                    <div class="">none</div>
+                </div>
+                <div class="my-container no-padding-margin d-flex flex-row">
+                    <div class="mr-auto">mr-auto</div>
+                    <div class="">none</div>
+                    <div class="">none</div>
+                </div>
+                <div class="my-container no-padding-margin d-flex flex-row">
+                    <div class="">none</div>
+                    <div class="">none</div>
+                    <div class="ml-auto">ml-auto</div>
+                </div>
+            </div>
+
+            main-axis: Y/column
+            <div class='my-container no-padding-margin d-flex flex-row'>
+                <div class="my-container no-padding-margin d-flex flex-column" style="height: 200px;">
+                    <div class="mb-auto">mb-auto</div>
+                    <div class="">none</div>
+                    <div class="">none</div>
+                </div>
+                <div class="my-container no-padding-margin d-flex flex-column" style="height: 200px;">
+                    <div class="">none</div>
+                    <div class="">none</div>
+                    <div class="mt-auto">mt-auto</div>
+                </div>
+            </div>
+
+        </article>
+        <aside class='my-container'>
+        </aside>
+    </section>
+    <footer class='my-container'>
+        
+    </footer>
+
+    <script type="text/javascript" src="./public/js/app.js"></script>
+</body>
+</html>
