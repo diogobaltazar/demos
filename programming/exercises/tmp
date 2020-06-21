@@ -1,0 +1,7 @@
+files=(tmpdir/*)
+for file in files; do
+  echo $file
+done
+
+echo ${files[0]}
+
