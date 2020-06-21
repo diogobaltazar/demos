@@ -44,9 +44,9 @@ diagnostics_storage_account='devrgdiag185'
 #
 #   SSH
 #
-#   Save private key to ced/ and `$ chmod 400 cred/ubuntu2004_key.pem`.
+#   Save private key to cred/ and `$ chmod 400 cred/ubuntu2004_key.pem`.
 #   Update user password (ui)
-#   Connect with ssh -i cred/ubuntu2004_key.pem $UBUNTU2004_USR@104.45.153.68
+#   Connect with ssh -i cred/ubuntu2004_key.pem $UBUNTU2004_USR@IP
 #   and login with the updated password. 
 #
 #   Nodejs Server Network Protocol and DNS
