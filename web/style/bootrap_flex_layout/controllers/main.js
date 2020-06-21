@@ -14,4 +14,6 @@ module.exports = app => {
     app.get('/justify_content', (_, res) => { res.render('justify_content') })
     app.get('/order', (_, res) => { res.render('order') })
     app.get('/wrap', (_, res) => { res.render('wrap') })
+    app.get('/navbar', (_, res) => { res.render('navbar') })
+    app.get('/container', (_, res) => { res.render('container') })
 }

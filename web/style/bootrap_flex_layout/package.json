@@ -17,11 +17,12 @@
   },
   "homepage": "https://github.com/diogobaltazar/network_graph#readme",
   "dependencies": {
+    "bootstrap-icons": "^1.0.0-alpha4",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "jquery": "^3.5.1",
     "less": "^3.11.1",
     "less-watch-compiler": "^1.14.6",
-    "nodemon": "^2.0.4",
-    "jquery": "^3.5.1"
+    "nodemon": "^2.0.4"
   }
 }
