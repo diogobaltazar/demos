@@ -12,10 +12,18 @@ transactions
 mutability  
 stream-data
 batch-data
-lineage-graph.computation.dataset  
+LDAP
++ lightweight-directory-access-protocol
++ authentication protocol
+AD
++ active-directory
++ uses the LDAP protocol
+lineage-graph.computation.dataset 
 + enables:
 + data lineage
 + fault-recovery by recalculating through the lineage graph should data be missing/corrupted
+ application-performance-management
++ monitor application resource consumption
 data-lineage  
 fault-tolerant  
 elastic-search  
@@ -269,8 +277,34 @@ azure.cloud
 google.cloud  
 alibaba.cloud  
 oracle.cloud  
-kubernettes  
+hypervisor
++ kernell virtuzlization enabler
+docker
++ application container (OS)
++ all docker containers share the same host OS kernel (linux + diff linux distros)
++ docker is not a kernel virtualization, it is OS virtualization with a common kernel, it is app containerization
++ it is lighter than a VM: less time to boot, less mem
++ VMs require the Hypervisor on top of the host OS
++ UCs:
+    + complex architecture where different components required different OS or library versions
+    + changing architecture as it goes along
+    + run each architectural component in it's own container, all a local system requires is docker, and the app will
+    be executed. It's like creating a VM with communicating VMs
+    + developping in containers allows ease of deployment to docker environments in the same OS kernell
+kubernettes, docker sawrm, mesos (apache)
++ container orchestration tool
++ dev by google
++ can orchestrate multiple docker hosts, and multiple docker containers inside each docker host
++ kubernettes cluster:
+    + set of docker hosts for example
+terraform.hashicorp
++ automate it infrastructure
+ansible.redhat
++ orchestration tool:
+    + cloud application deployments
+    + automate it infrastructure
 express  
++ nodejs router
 akka  
 devops  
 az.availability-zone  
