@@ -1,0 +1,22 @@
+{
+  "name": "restful_nodejs",
+  "version": "1.0.0",
+  "description": "RESTful nodejs API",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diogobaltazar/restful_nodejs.git"
+  },
+  "author": "diogo pereira marques",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diogobaltazar/restful_nodejs/issues"
+  },
+  "homepage": "https://github.com/diogobaltazar/restful_nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
