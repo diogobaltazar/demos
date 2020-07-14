@@ -3,5 +3,10 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "python.pythonPath": "/usr/bin/python3"
+    "python.pythonPath": "/usr/bin/python3",
+    "azureFunctions.deploySubpath": "azure/function/test_az_function",
+    "azureFunctions.scmDoBuildDuringDeployment": true,
+    "azureFunctions.projectLanguage": "Python",
+    "azureFunctions.projectRuntime": "~2",
+    "azureFunctions.projectSubpath": "azure/function/test_az_function"
 }
