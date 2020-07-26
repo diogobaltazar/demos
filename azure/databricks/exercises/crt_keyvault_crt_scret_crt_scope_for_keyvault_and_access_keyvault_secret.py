@@ -25,7 +25,7 @@
 # found on blob/Access Keys/key1
 
 # create databricks secret scope: https://<region>.azuredatabricks.net/
-# ?o=<id.organization>#secrets/createScope#secrets/createScope
+# ?o=<id.organization>#secrets/createScope
 # DATABRICKS_BACKED_SCOPE_NAME = <product>.backed_scope.databricks
 # DATABRICKS_BACKED_SCOPE_KEY_VAULT_DNS = KEY_VAULT_DNS
 # DATABRICKS_BACKED_SCOPE_KEY_VAULT_ID = KEY_VAULT_RESOURCE_ID
