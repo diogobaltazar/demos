@@ -80,6 +80,8 @@ compute.PaaS.models.infrastructure.azure.cloud
 IaaS.models.infrastructure.azure.cloud
 compute.IaaS.models.infrastructure.azure.cloud
 + VMs
+spark
++ framework to transform and perform analytics on data
 pool.spark-cluster.distributed.system
 + pool of instances/vms for multiple spark clusters
 + properties:
