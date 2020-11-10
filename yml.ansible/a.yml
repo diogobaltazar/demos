@@ -1,0 +1,17 @@
+# this is a comment
+
+# [start of document]
+---
+
+# dicts, unlike lists, are always assigned to a var
+- fst elem (str)
+- snd elem (dict):
+    fst key (str): value (str)
+    snd key (list):
+        - fst elem (str)
+
+# equivalent:
+[ 'fst elem (str)', 'snd elem (dict)': { 'fst key (str)': 'value (str)', 'snd key (str)': [ 'fst elem (str)' ] } ]
+
+# [start of document]
+...

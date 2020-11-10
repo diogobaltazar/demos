@@ -1,0 +1,18 @@
+# can't be used unquoted
+metachars: '[] {} > | * & ! % # ` @ ,'
+include_newlines: |
+            exactly as you see
+            will appear these three
+            lines
+fold_newlines: >
+            this is really a
+            single line of text
+            despite appearances
+escape_metachars_with_single_quotes: ':#'
+escape_only_in_double_quotes: "\t"
+
+use_declared: "{{ variable }}"
+
+&anchor_var val
+use_var_1: *anchor_var
+use_var_2: "{{ anchor_var }}"
