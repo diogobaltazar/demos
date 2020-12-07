@@ -1,1 +1,0 @@
-git remote rename $remote_old_name $remote_new_name

@@ -1,1 +1,0 @@
-git remote add $remote_name $remote_url
