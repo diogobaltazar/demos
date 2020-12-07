@@ -1,1 +1,0 @@
-git commit -m 'commit message for staged files'

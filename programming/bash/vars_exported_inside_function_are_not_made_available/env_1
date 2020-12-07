@@ -1,0 +1,18 @@
+function env_1 {
+  export ENV_1=ENV_1
+}
+
+env_1
+echo $ENV_1
+mkdir $ENV_1
+
+bash env_2 env_2
+echo $ENV_2
+mkdir $ENV_2
+
+. env_3
+echo $ENV_3
+mkdir $ENV_3
+
+"$@"
+

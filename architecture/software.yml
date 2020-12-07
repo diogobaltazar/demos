@@ -1,9 +1,0 @@
-modules:
-  - module:
-    - function:
-       - hints
-       - documentation
-       - sonarcube
-    - unit_test:
-       - function:
-         - documentation
