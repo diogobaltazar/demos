@@ -1,0 +1,1 @@
+source ${ENV_NAME}/bin/activate

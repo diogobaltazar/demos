@@ -1,0 +1,1 @@
+kill -SIGTERM $(ps -ef | grep $PROCESS_NAME | awk {'print $2'})
