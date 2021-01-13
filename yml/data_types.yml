@@ -1,0 +1,11 @@
+# true, false to be compatible with default yamllint options
+boolean:
+    - yes
+    - true
+    - True
+    - TRUE
+    - no
+    - false
+    - False
+    - FALSE
+string: "string"

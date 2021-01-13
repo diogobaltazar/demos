@@ -1,0 +1,1 @@
+ssh -i ~/.ssh/key user@host '. script.sh'

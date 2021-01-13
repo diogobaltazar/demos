@@ -1,0 +1,6 @@
+function env_2 {
+  export ENV_2=ENV_2
+}
+
+"$@"
+
