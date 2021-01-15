@@ -11,12 +11,13 @@ Every container running on the host has a unique identifier (`IP`) `ip-container
 
 run image in container. The image is either on the local host or on the docker hub. If the image is not present in the local host, it will fetch it from the hub.
 
-    $ docker run [[-it] | [[<ip-host>]:<port-host>:<port-container>] [-v <dir-host>:<dir-container>] <img>:[<img-version>|latest]
+    $ docker run [-e <var-name>=<var-value>] [[-it] | [[<ip-host>]:<port-host>:<port-container>] [-v <dir-host>:<dir-container>] <img>:[<img-version>|latest]
 
 `-i` – **interactive** map parent proccess stdin to container stdin  
 `-t` – **pseudo-terminal** create terminal for the mapping  
 `[<ip-host>]:<port-host>:<port-container>` – port mapping between host-port and container-app-port  
 `-v <dir-host>:<dir-container>` – mount host directory to container directory, meaning that operations performed to `<dir-container>` will be persisted because they are in fact performed to `<dir-host>`  
+`-e <var-name>=<var-value>` – create container environment var `<var-name>` with value `<var-value>`. These variables are found in the container environment by running from the OS `docker inspect <container-name>` under `Config.Env`.      
 
 run command in container
 
@@ -71,3 +72,13 @@ run container in detach mode (background of parent process)
 attach container to proccess
 
     $ docker attach <container-id>|<container-name>
+
+build image
+
+    $ docker build <container-image-path> -t <image-tag-name> 
+
+`-t` – **pseudo-terminal** create terminal to map parent process stdin to image stdin  
+
+push image to docker registry
+
+    $ docker push <image-tag-name>
