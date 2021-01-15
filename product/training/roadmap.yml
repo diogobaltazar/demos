@@ -1,0 +1,21 @@
+- backlog:
+  - business:
+    - market_analysis:
+      - none
+  - product:
+    - features_listing:
+      - none
+    - product_characteristics:
+      - none
+    - product_definition: I want to excel! To excel, I will perform as a professional athlete! And work my ass off!
+    - product_description: none
+  - tech:
+    - frontend:
+      - webapp
+      - mobile_app
+    - backend:
+      - cloud-based-solution (Azure)
+      - WebApp (React)
+      - Account Storage
+      - Databricks Cluster
+      - Authentication

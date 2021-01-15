@@ -1,0 +1,1 @@
+git push --set-upstream $remote_name master

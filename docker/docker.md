@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+ls images
+`docker image ls`
+
+``docker rm --force <img-name>``
+``docker build --tag <img-name>:<img-version> .``
+``docker run --publish 127.0.0.1:8000:8000 --detach --name <img-name> <img-name>:<img-version>``
+=======
 # intro
 
 `Containers` are like OSs but they are not meant to host entire OSs, they are meant to host a task, and should terminate once the task terminates. Containers **share the same host OS kernel**. Examples of types of containers: `LXC`, `LXT`, `LXCFX`. Docker uses LXC containers but simplifies the creation of the container. Linux containers can only run on a Linux `docker host` or `docker engine`. DOS containers can only run on a DOS docker host.
@@ -72,6 +80,7 @@ run container in detach mode (background of parent process)
 attach container to proccess
 
     $ docker attach <container-id>|<container-name>
+<<<<<<< HEAD
 
 build image
 
@@ -82,3 +91,6 @@ build image
 push image to docker registry
 
     $ docker push <image-tag-name>
+=======
+>>>>>>> 018418985ef860e87b5e9f2a3a3153a24d471bd3
+>>>>>>> 10080358e245b46731c7cd9c7511b329281985ff

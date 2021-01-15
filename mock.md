@@ -1,0 +1,1 @@
+[py](https://towardsdatascience.com/when-and-how-to-use-python-mock-b626e5f9bf7)

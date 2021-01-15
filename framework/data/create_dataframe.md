@@ -14,7 +14,7 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html
 # src ------------------------------------------------------------------
 df = pd.DataFrame(data = {
     'a': [1, 2, 3],
-    'b': ['a', 'b', 'c']
+    'b': ['abc', 'def', 'ghi']
 })
 
 # output ---------------------------------------------------------------

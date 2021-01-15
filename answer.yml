@@ -1,0 +1,3 @@
+contexts:
+  - context : "installing azure cli: signed repository"
+    example: "E: The repository 'http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04  Release' is not signed."
